@@ -23,9 +23,10 @@ public class playerScript : MonoBehaviour {
 	public Transform hand;
 	private Vector3 dir = Vector3.right;
 	public LayerMask interacao;
-	//public LayerMask interacao;
 	public GameObject objetoInteracao;
-	//public GameObject objetoInteracao;
+
+	//SISTEMA DE ARMAS
+	public GameObject[] armas;
 
 
 
@@ -34,6 +35,11 @@ public class playerScript : MonoBehaviour {
 
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
+
+		foreach (GameObject o in armas)
+		{
+			o.SetActive(false);
+		}
 		
 	}
 
@@ -127,6 +133,7 @@ public class playerScript : MonoBehaviour {
 		switch(atk){
 			case 0:
 				attacking = false;
+				armas[4].SetActive(false);
 				break;
 			case 1:
 				attacking = true;
@@ -148,6 +155,17 @@ public class playerScript : MonoBehaviour {
 		
 		
 	}
+
+	void controleArma(int id){
+
+		foreach (GameObject o in armas)
+		{
+			o.SetActive(false);
+		}
+
+		armas[id].SetActive(true);
+	}
+
 
 
 }
