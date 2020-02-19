@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danoMin: 1
   danoMax: 5
-  tipoDano: 0
+  tipoDano: 1
 --- !u!1 &81892600
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +986,10 @@ MonoBehaviour:
   - Normal
   - Fogo
   - "\xC1gua"
+  fxDano:
+  - {fileID: 1755100440023334, guid: f90b40a9a470c1342937c763fd2caa3e, type: 2}
+  - {fileID: 1681571091811050, guid: 44ed55cd45b376a42895c51f53731bab, type: 2}
+  - {fileID: 0}
 --- !u!4 &1022754835
 Transform:
   m_ObjectHideFlags: 0
@@ -1592,7 +1596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danoMin: 1
   danoMax: 5
-  tipoDano: 0
+  tipoDano: 1
 --- !u!1 &1297611808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,7 +1816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danoMin: 1
   danoMax: 5
-  tipoDano: 0
+  tipoDano: 1
 --- !u!1 &1525774821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danoMin: 1
   danoMax: 5
-  tipoDano: 0
+  tipoDano: 1
 --- !u!1 &1763804733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2765,7 +2769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danoMin: 1
   danoMax: 5
-  tipoDano: 0
+  tipoDano: 1
 --- !u!1 &2046347639
 GameObject:
   m_ObjectHideFlags: 0

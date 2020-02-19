@@ -7,6 +7,7 @@ public class _GameController : MonoBehaviour {
 	public	int	teste;
 
 	public string[] tiposDano;
+	public GameObject[] fxDano;
 
 	// Use this for initialization
 	void Start () {
