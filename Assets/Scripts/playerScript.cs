@@ -12,6 +12,8 @@ public class playerScript : MonoBehaviour {
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 
+	public int vidaMax, vidaAtual;
+
 	public float speed;
 	public float jumpForce;
 
@@ -46,6 +48,8 @@ public class playerScript : MonoBehaviour {
 
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
+
+		vidaAtual = vidaMax;
 
 		foreach (GameObject o in armas)
 		{

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class _GameController : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class _GameController : MonoBehaviour {
 	public GameObject fxMorte;
 
 	public int gold;	//ARMAZENA A QUANTIDADE DE OURO QUE COLETAMOS
+	public TextMeshProUGUI goldTxt;
 
 
 
@@ -23,6 +25,8 @@ public class _GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		goldTxt.text = gold.ToString("N0");
 		
 	}
 }
