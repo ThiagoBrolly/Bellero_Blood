@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour {
 
+	private _GameController _GameController;
+
 	private Animator playerAnimator;
 	private Rigidbody2D playerRb;
 
@@ -30,8 +32,17 @@ public class playerScript : MonoBehaviour {
 
 
 
+
+
+
+
+
+
+
 	// Use this for initialization
 	void Start () {
+
+		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
 
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
@@ -43,12 +54,28 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
+
+
+
+
+
+
+
+
+
 	void FixedUpdate() {
 		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
 		playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
 
 		interagir();
 	}
+
+
+
+
+
+
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -119,6 +146,14 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
+
+
+
+
+
+
+
+
 	void flip(){
 		lookLeft = !lookLeft;
 		float x = transform.localScale.x;
@@ -128,6 +163,12 @@ public class playerScript : MonoBehaviour {
 		dir.x = x;
 		
 	}
+
+
+
+
+
+
 
 	void atack(int atk){
 		switch(atk){
@@ -140,6 +181,11 @@ public class playerScript : MonoBehaviour {
 				break;
 		}
 	}
+
+
+
+
+
 
 	void interagir(){
 
@@ -156,6 +202,11 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
+
+
+
+
+
 	void controleArma(int id){
 
 		foreach (GameObject o in armas)
@@ -164,6 +215,21 @@ public class playerScript : MonoBehaviour {
 		}
 
 		armas[id].SetActive(true);
+	}
+
+
+
+
+
+	void OnTriggerEnter2D(Collider2D col) {
+		switch (col.gameObject.tag)
+		{
+			case "coletavel":
+
+				col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
+
+			break;
+		}
 	}
 
 

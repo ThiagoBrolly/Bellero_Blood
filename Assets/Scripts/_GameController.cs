@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class _GameController : MonoBehaviour {
 
-	public	int	teste;
 
 	public string[] tiposDano;
 	public GameObject[] fxDano;
+	public GameObject fxMorte;
+
+	public int gold;	//ARMAZENA A QUANTIDADE DE OURO QUE COLETAMOS
+
+
+
+
+
 
 	// Use this for initialization
 	void Start () {

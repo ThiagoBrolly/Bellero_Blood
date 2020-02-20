@@ -35,6 +35,15 @@ public class controleDanoInimigo : MonoBehaviour {
 	private bool getHit; // INDICA SE TODOU UM DANO
 	private bool died;	// INDICA SE ESTÁ MORTO
 
+
+
+	[Header("Configuração de Chão")]
+	public Transform groundCheck;
+	public LayerMask whatIsGround;
+
+	[Header("Configuração de Loot")]
+	public GameObject loots;
+
 	
 
 
@@ -156,7 +165,8 @@ public class controleDanoInimigo : MonoBehaviour {
 					if(vidaAtual <= 0){
 						died = true;
 						animator.SetInteger("idAnimation", 3);
-						Destroy(this.gameObject, 2);
+						StartCoroutine("loot");
+						
 					}
 
 					// TEXTO DANO
@@ -200,6 +210,34 @@ public class controleDanoInimigo : MonoBehaviour {
 		x *= -1;
 		transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 		barrasVida.transform.localScale = new Vector3(x, barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
+	}
+
+
+
+
+
+
+
+
+
+	IEnumerator loot(){
+		yield return new WaitForSeconds(2);
+		GameObject fxMorte = Instantiate(_GameController.fxMorte, groundCheck.position, transform.localRotation);
+		yield return new WaitForSeconds(0.5f);
+		sRender.enabled = false;
+
+		//CONTROLE DE LOOT
+		int qtdMoedas = Random.Range(1,5);
+		for(int l = 0; l < qtdMoedas; l++){
+			GameObject lootTemp = Instantiate(loots, transform.position, transform.localRotation);
+			lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-25, 25), 90));
+			yield return new WaitForSeconds(0.1f);
+		}
+		
+
+		yield return new WaitForSeconds(2);
+		Destroy(fxMorte);
+		Destroy(this.gameObject);
 	}
 
 

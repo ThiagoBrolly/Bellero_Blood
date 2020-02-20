@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - arma
+  - coletavel
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - ground
   - interacao
   - inimigo
-  - 
+  - coletavel
   - 
   - 
   - 
@@ -42,8 +43,20 @@ TagManager:
   - name: BackGround
     uniqueID: 1029296413
     locked: 0
+  - name: paredes
+    uniqueID: 717339001
+    locked: 0
+  - name: ObjetosDecoracao
+    uniqueID: 3872211725
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: plataformas
+    uniqueID: 3699910543
+    locked: 0
+  - name: Decoracao Primeiro Plano
+    uniqueID: 902547513
     locked: 0
   - name: HUD
     uniqueID: 4186453613
