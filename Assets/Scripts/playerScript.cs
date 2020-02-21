@@ -113,6 +113,9 @@ public class playerScript : MonoBehaviour {
 		}
 
 		if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao != null){
+			if(objetoInteracao.tag == "door"){
+				objetoInteracao.GetComponent<door>().tPlayer = this.transform;
+			}
 			objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
 		}
 
