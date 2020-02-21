@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class chest : MonoBehaviour {
 
-	private _GameController _GameController;
 	private SpriteRenderer spriteRenderer;
 	public Sprite[] imagemObjeto;
 	public bool open;
@@ -20,34 +19,19 @@ public class chest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
 		
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
 	}
 	public void interacao(){
-		open = !open;
 
-		switch (open)
-		{
-			case true:
-				spriteRenderer.sprite = imagemObjeto[1];
-
-				if (_GameController == null)
-				{
-					_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
-				}
-				
-				if(gerouLoot == false){
-					StartCoroutine("gerarLoot");
-				}
-
-				break;
-
-			case false:
-				spriteRenderer.sprite = imagemObjeto[0];
-				break;
+		if(open == false){
+			open = true;
+			spriteRenderer.sprite = imagemObjeto[1];
+			StartCoroutine("gerarLoot");
+			GetComponent<Collider2D>().enabled = false;
 		}
+
 	}
 
 

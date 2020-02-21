@@ -32,6 +32,8 @@ public class playerScript : MonoBehaviour {
 	//SISTEMA DE ARMAS
 	public GameObject[] armas;
 
+	public GameObject balaoAlerta;
+
 
 
 
@@ -198,9 +200,11 @@ public class playerScript : MonoBehaviour {
 
 		if(hit == true){
 			objetoInteracao = hit.collider.gameObject;
+			balaoAlerta.SetActive(true);
 		}
 		else{
 			objetoInteracao = null;
+			balaoAlerta.SetActive(false);
 		}
 		
 		
@@ -231,6 +235,7 @@ public class playerScript : MonoBehaviour {
 			case "coletavel":
 
 				col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
+				
 
 			break;
 		}

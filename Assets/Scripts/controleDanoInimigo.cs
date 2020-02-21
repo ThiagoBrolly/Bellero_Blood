@@ -221,10 +221,13 @@ public class controleDanoInimigo : MonoBehaviour {
 
 
 	IEnumerator loot(){
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 		GameObject fxMorte = Instantiate(_GameController.fxMorte, groundCheck.position, transform.localRotation);
 		yield return new WaitForSeconds(0.5f);
 		sRender.enabled = false;
+
+
+
 
 		//CONTROLE DE LOOT
 		int qtdMoedas = Random.Range(1,5);
@@ -235,7 +238,7 @@ public class controleDanoInimigo : MonoBehaviour {
 		}
 		
 
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(0.7f);
 		Destroy(fxMorte);
 		Destroy(this.gameObject);
 	}

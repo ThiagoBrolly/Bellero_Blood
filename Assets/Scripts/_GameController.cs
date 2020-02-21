@@ -26,7 +26,9 @@ public class _GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		goldTxt.text = gold.ToString("N0");
+		string s = gold.ToString("N0");
+
+		goldTxt.text = s.Replace(",", ".");
 		
 	}
 }

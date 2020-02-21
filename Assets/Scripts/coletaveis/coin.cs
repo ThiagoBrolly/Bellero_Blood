@@ -11,8 +11,6 @@ public class coin : MonoBehaviour {
 
 
 
-
-
 	// Use this for initialization
 	void Start () {
 
