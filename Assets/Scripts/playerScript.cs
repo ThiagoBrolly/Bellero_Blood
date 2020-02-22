@@ -183,7 +183,7 @@ public class playerScript : MonoBehaviour {
 		switch(atk){
 			case 0:
 				attacking = false;
-				armas[3].SetActive(false);
+				armas[4].SetActive(false);
 				break;
 			case 1:
 				attacking = true;
