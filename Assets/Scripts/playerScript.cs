@@ -30,6 +30,8 @@ public class playerScript : MonoBehaviour {
 	public GameObject objetoInteracao;
 
 	//SISTEMA DE ARMAS
+	public int idArma;
+	public int idArmaAtual;
 	public GameObject[] armas;
 
 	public GameObject balaoAlerta;
@@ -57,6 +59,8 @@ public class playerScript : MonoBehaviour {
 		{
 			o.SetActive(false);
 		}
+
+		trocarArma(idArma);
 		
 	}
 
@@ -161,6 +165,18 @@ public class playerScript : MonoBehaviour {
 
 
 
+	void LateUpdate() {
+		if(idArma != idArmaAtual){
+			trocarArma(idArma);
+		}
+	}
+
+
+
+
+
+
+
 
 
 	void flip(){
@@ -183,7 +199,7 @@ public class playerScript : MonoBehaviour {
 		switch(atk){
 			case 0:
 				attacking = false;
-				armas[4].SetActive(false);
+				armas[3].SetActive(false);
 				break;
 			case 1:
 				attacking = true;
@@ -242,6 +258,21 @@ public class playerScript : MonoBehaviour {
 
 			break;
 		}
+	}
+
+
+
+
+
+
+	public void trocarArma(int id){
+		idArma = id;
+		armas[0].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma1[idArma];
+		armas[1].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma2[idArma];
+		armas[2].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma3[idArma];
+		armas[3].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma4[idArma];
+
+		idArmaAtual = idArma;
 	}
 
 

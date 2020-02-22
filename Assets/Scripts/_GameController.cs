@@ -13,6 +13,13 @@ public class _GameController : MonoBehaviour {
 	public int gold;	//ARMAZENA A QUANTIDADE DE OURO QUE COLETAMOS
 	public TextMeshProUGUI goldTxt;
 
+	[Header("Banco de Dados Armas")]
+
+	public Sprite[] spriteArma1;
+	public Sprite[] spriteArma2;
+	public Sprite[] spriteArma3;
+	public Sprite[] spriteArma4;
+
 
 
 
