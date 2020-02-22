@@ -268,9 +268,28 @@ public class playerScript : MonoBehaviour {
 	public void trocarArma(int id){
 		idArma = id;
 		armas[0].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma1[idArma];
+		armaInfo tempInfoArma = armas[0].GetComponent<armaInfo>();
+		tempInfoArma.danoMin = _GameController.danoMinArma[idArma];
+		tempInfoArma.danoMax = _GameController.danoMaxArma[idArma];
+		tempInfoArma.tipoDano = _GameController.tipoDanoArma[idArma];
+
 		armas[1].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma2[idArma];
+		tempInfoArma = armas[1].GetComponent<armaInfo>();
+		tempInfoArma.danoMin = _GameController.danoMinArma[idArma];
+		tempInfoArma.danoMax = _GameController.danoMaxArma[idArma];
+		tempInfoArma.tipoDano = _GameController.tipoDanoArma[idArma];
+
 		armas[2].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma3[idArma];
+		tempInfoArma = armas[2].GetComponent<armaInfo>();
+		tempInfoArma.danoMin = _GameController.danoMinArma[idArma];
+		tempInfoArma.danoMax = _GameController.danoMaxArma[idArma];
+		tempInfoArma.tipoDano = _GameController.tipoDanoArma[idArma];
+
 		armas[3].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma4[idArma];
+		tempInfoArma = armas[3].GetComponent<armaInfo>();
+		tempInfoArma.danoMin = _GameController.danoMinArma[idArma];
+		tempInfoArma.danoMax = _GameController.danoMaxArma[idArma];
+		tempInfoArma.tipoDano = _GameController.tipoDanoArma[idArma];
 
 		idArmaAtual = idArma;
 	}

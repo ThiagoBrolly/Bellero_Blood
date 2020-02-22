@@ -19,6 +19,9 @@ public class _GameController : MonoBehaviour {
 	public Sprite[] spriteArma2;
 	public Sprite[] spriteArma3;
 	public Sprite[] spriteArma4;
+	public int[] danoMinArma;
+	public int[] danoMaxArma;
+	public int[] tipoDanoArma;
 
 
 
