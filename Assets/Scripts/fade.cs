@@ -15,6 +15,13 @@ public class fade : MonoBehaviour {
 
 
 
+	void Start(){
+		StartCoroutine("fadeO");
+	}
+
+
+
+
 	public void fadeIn(){
 		if(emTransicao == false){
 			painelFume.SetActive(true);

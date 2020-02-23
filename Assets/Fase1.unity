@@ -440,7 +440,7 @@ Transform:
   - {fileID: 1254384759}
   - {fileID: 826242994}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &81892600
 GameObject:
@@ -1012,7 +1012,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &202778648
 MonoBehaviour:
@@ -1317,7 +1317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &390626839
 GameObject:
@@ -1417,7 +1417,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &390626843
 MonoBehaviour:
@@ -1704,7 +1704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541417963
 GameObject:
@@ -1734,7 +1734,7 @@ Transform:
   - {fileID: 1470726443}
   - {fileID: 1776498736}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673410892
 GameObject:
@@ -1796,7 +1796,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &756466842
 GameObject:
@@ -1921,7 +1921,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818972465
 GameObject:
@@ -2245,6 +2245,16 @@ MonoBehaviour:
   fxMorte: {fileID: 1243625791641468, guid: 651def63887dac845bf9a26e9ddd2fbb, type: 2}
   gold: 0
   goldTxt: {fileID: 1221120454}
+  idPersonagem: 0
+  idPersonagemAtual: 0
+  vidaMaxima: 10
+  idArma: 1
+  nomePersonagem:
+  - 
+  - 
+  spriteSheetName:
+  - {fileID: 2800000, guid: 3a70927367c47d34aa50740cdeeb0626, type: 3}
+  - {fileID: 2800000, guid: d194dbd9cc307c6478a4cb34b4e92229, type: 3}
   spriteArma1:
   - {fileID: 21300116, guid: 3a70927367c47d34aa50740cdeeb0626, type: 3}
   - {fileID: 21300000, guid: 9d17ecfccaee3364eba5b50a1ce00f45, type: 3}
@@ -2277,9 +2287,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.6128528, y: -0.24863647, z: 0.19597574}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2078289746}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1080218694
 GameObject:
@@ -2456,7 +2467,7 @@ Transform:
   - {fileID: 1543020905}
   - {fileID: 2099875144}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1198152257
 GameObject:
@@ -2657,6 +2668,7 @@ GameObject:
   - component: {fileID: 1252815731}
   - component: {fileID: 1252815732}
   - component: {fileID: 1252815733}
+  - component: {fileID: 1252815734}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2723,7 +2735,7 @@ Transform:
   - {fileID: 1734647475}
   - {fileID: 1431417465}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1252815728
 Animator:
@@ -2865,6 +2877,21 @@ CircleCollider2D:
   m_Offset: {x: -0.029999997, y: -0.7806122}
   serializedVersion: 2
   m_Radius: 0.14260352
+--- !u!114 &1252815734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1252815725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3512cce5cf3bb80489f30d198fc60436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 1
+  sprites: []
+  spriteSheetName: Hero
+  LoadedSpriteSheetName: 
 --- !u!1 &1254384757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,7 +3105,7 @@ Transform:
   - {fileID: 327516029}
   - {fileID: 1503520992}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1408048438
 GameObject:
@@ -3954,7 +3981,7 @@ Transform:
   - {fileID: 2046347640}
   - {fileID: 81892601}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1704476475
 GameObject:
@@ -4044,7 +4071,7 @@ RectTransform:
   m_Children:
   - {fileID: 2133642522}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4296,7 +4323,7 @@ Transform:
   - {fileID: 1198152258}
   - {fileID: 513344043}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1763804736
 BoxCollider2D:
@@ -4421,6 +4448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3512cce5cf3bb80489f30d198fc60436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   sprites: []
   spriteSheetName: Hero_Inverso
   LoadedSpriteSheetName: 
@@ -5965,8 +5993,8 @@ RectTransform:
   m_Children:
   - {fileID: 205600473}
   - {fileID: 1855113491}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1022754835}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6039,7 +6067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2133642522
 RectTransform:
   m_ObjectHideFlags: 0

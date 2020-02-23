@@ -5,8 +5,6 @@ using TMPro;
 
 public class _GameController : MonoBehaviour {
 
-	private fade fade;
-
 
 	public string[] tiposDano;
 	public GameObject[] fxDano;
@@ -14,6 +12,16 @@ public class _GameController : MonoBehaviour {
 
 	public int gold;	//ARMAZENA A QUANTIDADE DE OURO QUE COLETAMOS
 	public TextMeshProUGUI goldTxt;
+
+	[Header("Informações Player")]
+	public int idPersonagem;
+	public int idPersonagemAtual;
+	public int vidaMaxima;
+	public int idArma;
+
+	[Header("Banco de Personagens")]
+	public string[] nomePersonagem;
+	public Texture[] spriteSheetName;
 
 	[Header("Banco de Dados Armas")]
 
@@ -32,9 +40,9 @@ public class _GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	
 
-		fade = FindObjectOfType(typeof(fade)) as fade;
-		fade.fadeOut();
+		DontDestroyOnLoad(this.gameObject);
 		
 	}
 	
@@ -48,6 +56,7 @@ public class _GameController : MonoBehaviour {
 		string s = gold.ToString("N0");
 
 		goldTxt.text = s.Replace(",", ".");
+
 		
 	}
 }

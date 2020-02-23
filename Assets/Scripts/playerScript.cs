@@ -50,6 +50,10 @@ public class playerScript : MonoBehaviour {
 
 		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
 
+		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
+		vidaMax = _GameController.vidaMaxima;
+		idArma = _GameController.idArma;
+		
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
 

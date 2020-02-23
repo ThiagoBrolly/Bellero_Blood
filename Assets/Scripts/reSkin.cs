@@ -5,6 +5,10 @@ using System.Linq;
 
 public class reSkin : MonoBehaviour {
 
+	private _GameController _GameController;
+
+	public bool isPlayer; // indica se o script está associado ao personagem principal
+
 	private SpriteRenderer sRender;
 
 	public Sprite[] sprites;
@@ -21,6 +25,12 @@ public class reSkin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
+		if(isPlayer){
+			spriteSheetName = _GameController.spriteSheetName[_GameController.idPersonagem].name;
+		}
+
 		sRender = GetComponent<SpriteRenderer>();
 		LoadSpriteSheet();		
 	}
@@ -35,6 +45,13 @@ public class reSkin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
+
+		if(isPlayer){
+			if(_GameController.idPersonagem != _GameController.idPersonagemAtual){
+				spriteSheetName = _GameController.spriteSheetName[_GameController.idPersonagem].name;
+				_GameController.idPersonagemAtual = _GameController.idPersonagem;
+			}
+		}
 
 		if(LoadedSpriteSheetName != spriteSheetName){
 			LoadSpriteSheet();
