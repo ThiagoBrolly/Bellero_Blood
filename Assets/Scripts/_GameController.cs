@@ -5,6 +5,8 @@ using TMPro;
 
 public class _GameController : MonoBehaviour {
 
+	private fade fade;
+
 
 	public string[] tiposDano;
 	public GameObject[] fxDano;
@@ -30,9 +32,16 @@ public class _GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		fade = FindObjectOfType(typeof(fade)) as fade;
+		fade.fadeOut();
 		
 	}
 	
+
+
+
+
 	// Update is called once per frame
 	void Update () {
 

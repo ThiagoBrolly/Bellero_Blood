@@ -187,11 +187,14 @@ public class controleDanoInimigo : MonoBehaviour {
 					Destroy(knockTemp, 0.02f);
 
 					StartCoroutine("invuneravel");
+					
 
 				}
+				
 
 				break;
 		}
+		
 	}
 
 
