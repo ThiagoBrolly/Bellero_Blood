@@ -19,8 +19,10 @@ public class coin : MonoBehaviour {
 	}
 	
 	public void coletar(){
+		
 		_GameController.gold += valor;
 		Destroy(this.gameObject);
+
 	}
 
 }

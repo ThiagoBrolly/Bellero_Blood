@@ -53,7 +53,7 @@ public class chest : MonoBehaviour {
 
 			GameObject lootTemp = Instantiate(loots[idLoot], transform.position, transform.localRotation);
 			lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-25, 25), 90));
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(0.2f);
 		}
 	}
 }

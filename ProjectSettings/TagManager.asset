@@ -7,6 +7,7 @@ TagManager:
   - arma
   - coletavel
   - door
+  - inimigo
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - interacao
   - inimigo
   - coletavel
-  - 
-  - 
+  - obstaculosInimigo
+  - Player
   - 
   - 
   - 
