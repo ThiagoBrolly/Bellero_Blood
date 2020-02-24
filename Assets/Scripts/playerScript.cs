@@ -259,7 +259,12 @@ public class playerScript : MonoBehaviour {
 
 				col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
 				
+			break;
 
+			case "inimigo":
+
+				_GameController.vidaAtual -= 1;
+				
 			break;
 		}
 	}

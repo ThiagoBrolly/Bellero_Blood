@@ -33,6 +33,10 @@ public class _GameController : MonoBehaviour {
 	public int[] danoMaxArma;
 	public int[] tipoDanoArma;
 
+	[Header("InfoPlayer")]
+	public int vidaMax;
+	public int vidaAtual;
+
 
 
 
@@ -43,6 +47,8 @@ public class _GameController : MonoBehaviour {
 	
 
 		DontDestroyOnLoad(this.gameObject);
+
+		vidaAtual = vidaMaxima;
 		
 	}
 	

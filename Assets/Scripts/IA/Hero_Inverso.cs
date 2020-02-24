@@ -210,4 +210,11 @@ public class Hero_Inverso : MonoBehaviour {
 
 		armas[id].SetActive(true);
 	}
+
+
+
+
+	public void tomeiHit(){
+		chageState(enemyState.ALERTA);
+	}
 }

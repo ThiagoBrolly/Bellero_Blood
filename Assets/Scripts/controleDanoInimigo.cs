@@ -187,6 +187,8 @@ public class controleDanoInimigo : MonoBehaviour {
 					Destroy(knockTemp, 0.02f);
 
 					StartCoroutine("invuneravel");
+
+					this.gameObject.SendMessage("tomeiHit", SendMessageOptions.DontRequireReceiver);
 					
 
 				}
