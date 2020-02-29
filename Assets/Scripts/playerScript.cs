@@ -14,6 +14,14 @@ public class playerScript : MonoBehaviour {
 
 	public int vidaMax, vidaAtual;
 
+	public bool death;
+
+	public float knockback;
+	public float knockbackCount;
+	public float knockbackLength;
+
+	public bool knockbackConfirm;
+
 	public float speed;
 	public float jumpForce;
 
@@ -79,7 +87,14 @@ public class playerScript : MonoBehaviour {
 
 	void FixedUpdate() {
 		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
-		playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
+		if(!death && !knockbackConfirm){
+			
+			playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
+		}
+		else if(death == true){
+			playerRb.velocity = new Vector2(0, playerRb.velocity.y);
+			
+		}
 
 		interagir();
 	}
@@ -96,6 +111,8 @@ public class playerScript : MonoBehaviour {
 
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
+
+		if(!death && !knockbackConfirm){
 
 		if(h > 0 && lookLeft == true && attacking == false){
 			flip();
@@ -156,9 +173,32 @@ public class playerScript : MonoBehaviour {
 			standing.enabled = true;
 		}
 
+		}
+
+////////////////////////
+		if(vidaAtual > vidaMax){
+			vidaAtual = vidaMax;
+		}
+		if(vidaAtual <= 0){
+			death = true;
+			GetComponent<Collider2D>().enabled = false;
+		}
+
+		if(knockbackConfirm){
+			knockbackCount -= Time.deltaTime;
+		}
+		if(knockbackCount <= 0){
+			knockbackConfirm = false;
+		}
+
+/////////////////////////////
+
 		playerAnimator.SetBool("grounded", Grounded);
 		playerAnimator.SetInteger("idAnimation", idAnimation);
 		playerAnimator.SetFloat("speedY", playerRb.velocity.y);
+		////////////
+		playerAnimator.SetBool("Death", death);
+		playerAnimator.SetBool("KnockB", knockbackConfirm);
 
 		
 	}
@@ -213,6 +253,31 @@ public class playerScript : MonoBehaviour {
 
 
 
+////////////////////
+
+	public void Damage(int dmg){
+		vidaAtual -= dmg;
+	}
+
+
+	public void knockbackRight(){
+		if(death == false){
+			playerRb.velocity = new Vector2(knockback, knockback);
+			knockbackCount = knockbackLength;
+			knockbackConfirm = true;
+		}
+	}
+
+	public void knockbackLeft(){
+		if(death == false){
+			playerRb.velocity = new Vector2(-knockback, knockback);
+			knockbackCount = knockbackLength;
+			knockbackConfirm = true;
+		}
+	}
+
+
+///////////////////////////
 
 
 
