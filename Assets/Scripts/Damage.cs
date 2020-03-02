@@ -3,20 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Damage : MonoBehaviour {
-
 	private Transform playerTransform;
 
-//teste
-
-	// Use this for initialization
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void Start () {
-
 		playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-		
 	}
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D other) {
 
 		if (other.tag == "Player" && other.isTrigger != true && playerTransform.transform.position.x > transform.position.x){

@@ -24,7 +24,6 @@ public class controleDanoInimigo : MonoBehaviour {
 	public bool olhandoEsquerda;
 	public bool playerEsquerda;
 
-
 	//KNOCKBACK
 	[Header("Configuração KnockBack")]
 	public GameObject knockForcePrefab;	// força de repulsão
@@ -35,8 +34,6 @@ public class controleDanoInimigo : MonoBehaviour {
 	private bool getHit; // INDICA SE TODOU UM DANO
 	private bool died;	// INDICA SE ESTÁ MORTO
 
-
-
 	[Header("Configuração de Chão")]
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
@@ -45,26 +42,13 @@ public class controleDanoInimigo : MonoBehaviour {
 	public GameObject loots;
 
 	
-
-
-
-
-
-
-
-
-
-
-
-	// Use this for initialization
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void Start () {
 
 		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
 		playerScript = FindObjectOfType(typeof(playerScript)) as playerScript;
 		sRender = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator>();
-
-
 
 		sRender.color = characterColor[0];
 		barrasVida.SetActive(false);
@@ -77,22 +61,9 @@ public class controleDanoInimigo : MonoBehaviour {
 			transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 			barrasVida.transform.localScale = new Vector3(x, barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
 		}
-
-		
 	}
 
-
-
-
-
-
-
-
-
-
-
-	
-	// Update is called once per frame
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
 
 		//VERIFICAR SE O PLAYER ESTÁ A ESQUERDA OU A DIREITA DO INIMIGO
@@ -125,15 +96,7 @@ public class controleDanoInimigo : MonoBehaviour {
 
 	}
 
-
-
-
-
-
-
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void OnTriggerEnter2D(Collider2D col) {
 
 		if(died == true){ return; }
@@ -166,9 +129,8 @@ public class controleDanoInimigo : MonoBehaviour {
 						died = true;
 						animator.SetInteger("idAnimation", 3);
 						StartCoroutine("loot");
-						
 					}
-
+					
 					// TEXTO DANO
 					GameObject danoTemp = Instantiate(danoTxtPrefab, transform.position, transform.localRotation);
 					danoTemp.GetComponentInChildren<TextMeshPro>().text = Mathf.RoundToInt(danoTomado).ToString();
@@ -182,7 +144,6 @@ public class controleDanoInimigo : MonoBehaviour {
 					danoTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcaX, 200));
 					Destroy(danoTemp, 1f);
 
-					
 					GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation);
 					Destroy(knockTemp, 0.02f);
 
@@ -190,25 +151,12 @@ public class controleDanoInimigo : MonoBehaviour {
 
 					this.gameObject.SendMessage("tomeiHit", SendMessageOptions.DontRequireReceiver);
 					
-
 				}
-				
-
 				break;
 		}
-		
 	}
 
-
-
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////FLIP/////////////////////////////////////////////////////////
 	void flip(){
 		olhandoEsquerda = !olhandoEsquerda;
 		float x = transform.localScale.x;
@@ -217,22 +165,12 @@ public class controleDanoInimigo : MonoBehaviour {
 		barrasVida.transform.localScale = new Vector3(x, barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
 	}
 
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////GERAR MOEDAS POS MORTE/////////////////////////////////////////////////////////////////
 	IEnumerator loot(){
 		yield return new WaitForSeconds(1);
 		GameObject fxMorte = Instantiate(_GameController.fxMorte, groundCheck.position, transform.localRotation);
 		yield return new WaitForSeconds(0.5f);
 		sRender.enabled = false;
-
-
-
 
 		//CONTROLE DE LOOT
 		int qtdMoedas = Random.Range(1,5);
@@ -241,25 +179,13 @@ public class controleDanoInimigo : MonoBehaviour {
 			lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-25, 25), 90));
 			yield return new WaitForSeconds(0.1f);
 		}
-		
 
 		yield return new WaitForSeconds(0.7f);
 		Destroy(fxMorte);
 		Destroy(this.gameObject);
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////NÃO RECEBER DANO POR ALGUM TEMPO////////////////////////////////////////////////////////
 	IEnumerator invuneravel(){
 		sRender.color = characterColor[1];
 		yield return new WaitForSeconds(0.02f);

@@ -8,6 +8,7 @@ public class playerScript : MonoBehaviour {
 
 	private Animator playerAnimator;
 	private Rigidbody2D playerRb;
+private SpriteRenderer playerRender;
 
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
@@ -44,16 +45,11 @@ public class playerScript : MonoBehaviour {
 
 	public GameObject balaoAlerta;
 
+	public Color hitColor;
+	public Color noHitColor;
 
 
-
-
-
-
-
-
-
-	// Use this for initialization
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 	void Start () {
 
 		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
@@ -64,6 +60,7 @@ public class playerScript : MonoBehaviour {
 		
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
+		playerRender = GetComponent<SpriteRenderer>();
 
 		vidaAtual = vidaMax;
 
@@ -76,37 +73,18 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////
 	void FixedUpdate() {
 		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
 		if(!death && !knockbackConfirm){
-			
 			playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
-		}
-		else if(death == true){
+		}	else if(death == true){
 			playerRb.velocity = new Vector2(0, playerRb.velocity.y);
-			
 		}
-
 		interagir();
 	}
 
-
-
-
-
-
-
-	
-	// Update is called once per frame
+///////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
 
 		h = Input.GetAxisRaw("Horizontal");
@@ -126,8 +104,7 @@ public class playerScript : MonoBehaviour {
 			if(Grounded == true){
 				h = 0;
 			}
-		}
-		else if(h !=0){
+		}	else if(h !=0){
 			idAnimation = 1;
 		} else{
 			idAnimation = 0;
@@ -142,17 +119,11 @@ public class playerScript : MonoBehaviour {
 				objetoInteracao.GetComponent<door>().tPlayer = this.transform;
 			}
 			objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
-		}
-
-
-		else if(Input.GetButtonDown("Fire1") && attacking == false && Grounded == false){ 
+		}	else if(Input.GetButtonDown("Fire1") && attacking == false && Grounded == false){ 
 			playerAnimator.SetTrigger("atackJump");
-		}
-		else if(Input.GetButtonDown("Fire1") && v < 0 && attacking == false && Grounded == true){ 
+		}	else if(Input.GetButtonDown("Fire1") && v < 0 && attacking == false && Grounded == true){ 
 			playerAnimator.SetTrigger("atackCrouch");
-		}
-
-		
+		}		
 
 		if(Input.GetButtonDown("Jump") && Grounded == true && attacking == false){
 			playerRb.AddForce(new Vector2(0, jumpForce));
@@ -172,7 +143,6 @@ public class playerScript : MonoBehaviour {
 			crounching.enabled = false;
 			standing.enabled = true;
 		}
-
 		}
 
 ////////////////////////
@@ -181,7 +151,8 @@ public class playerScript : MonoBehaviour {
 		}
 		if(vidaAtual <= 0){
 			death = true;
-			GetComponent<Collider2D>().enabled = false;
+			//GetComponent<Collider2D>().enabled = false;
+			this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");
 		}
 
 		if(knockbackConfirm){
@@ -191,23 +162,14 @@ public class playerScript : MonoBehaviour {
 			knockbackConfirm = false;
 		}
 
-/////////////////////////////
-
 		playerAnimator.SetBool("grounded", Grounded);
 		playerAnimator.SetInteger("idAnimation", idAnimation);
 		playerAnimator.SetFloat("speedY", playerRb.velocity.y);
-		////////////
 		playerAnimator.SetBool("Death", death);
 		playerAnimator.SetBool("KnockB", knockbackConfirm);
-
-		
 	}
 
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void LateUpdate() {
 		if(idArma != idArmaAtual){
@@ -215,13 +177,7 @@ public class playerScript : MonoBehaviour {
 		}
 	}
 
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void flip(){
 		lookLeft = !lookLeft;
@@ -233,12 +189,7 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 	void atack(int atk){
 		switch(atk){
 			case 0:
@@ -251,14 +202,36 @@ public class playerScript : MonoBehaviour {
 		}
 	}
 
-
-
-////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 	public void Damage(int dmg){
 		vidaAtual -= dmg;
+		StartCoroutine("damageController");
 	}
 
+////////////////////////////////////////////////////////////////////////////////////
+
+	IEnumerator damageController(){
+		this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");  //MUDAR OBJETO DE LAYER
+		playerRender.color = hitColor;
+		yield return new WaitForSeconds(0.2f);
+
+		playerRender.color = noHitColor;
+
+		for(int i = 0; i < 3; i++){
+			playerRender.enabled = false;
+			yield return new WaitForSeconds(0.2f);
+			playerRender.enabled = true;
+			yield return new WaitForSeconds(0.2f);
+		}
+
+		this.gameObject.layer = LayerMask.NameToLayer("Player");
+		playerRender.color = Color.white;
+		
+	}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void knockbackRight(){
 		if(death == false){
@@ -267,7 +240,7 @@ public class playerScript : MonoBehaviour {
 			knockbackConfirm = true;
 		}
 	}
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void knockbackLeft(){
 		if(death == false){
 			playerRb.velocity = new Vector2(-knockback, knockback);
@@ -277,9 +250,7 @@ public class playerScript : MonoBehaviour {
 	}
 
 
-///////////////////////////
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void interagir(){
 
@@ -298,11 +269,7 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
-
-
-
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void controleArma(int id){
 
 		foreach (GameObject o in armas)
@@ -313,9 +280,7 @@ public class playerScript : MonoBehaviour {
 		armas[id].SetActive(true);
 	}
 
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void OnTriggerEnter2D(Collider2D col) {
 		switch (col.gameObject.tag)
@@ -334,10 +299,7 @@ public class playerScript : MonoBehaviour {
 		}
 	}
 
-
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void trocarArma(int id){
 		idArma = id;

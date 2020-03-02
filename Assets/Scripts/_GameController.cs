@@ -5,7 +5,6 @@ using TMPro;
 
 public class _GameController : MonoBehaviour {
 
-
 	public string[] tiposDano;
 	public GameObject[] fxDano;
 	public GameObject fxMorte;
@@ -38,31 +37,15 @@ public class _GameController : MonoBehaviour {
 	public int vidaAtual;
 
 
-
-
-
-
-	// Use this for initialization
+///////////////////////////////////////////////////////////////////////////////////
 	void Start () {
-	
-
 		DontDestroyOnLoad(this.gameObject);
-
 		vidaAtual = vidaMaxima;
-		
 	}
 	
-
-
-
-
-	// Update is called once per frame
+////////////////////////////////////////////////////////////////////////////////
 	void Update () {
-
 		string s = gold.ToString("N0");
-
 		goldTxt.text = s.Replace(",", ".");
-
-		
 	}
 }
