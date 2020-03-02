@@ -6,7 +6,7 @@ public class Damage : MonoBehaviour {
 
 	private Transform playerTransform;
 
-
+//teste
 
 	// Use this for initialization
 	void Start () {
