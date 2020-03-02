@@ -5,28 +5,26 @@ using UnityEngine;
 public class playerScript : MonoBehaviour {
 
 	private _GameController _GameController;
-
 	private Animator playerAnimator;
 	private Rigidbody2D playerRb;
-private SpriteRenderer playerRender;
-
-	public Transform groundCheck;
-	public LayerMask whatIsGround;
+	private SpriteRenderer playerRender;
 
 	public int vidaMax, vidaAtual;
-
 	public bool death;
 
 	public float knockback;
 	public float knockbackCount;
 	public float knockbackLength;
-
 	public bool knockbackConfirm;
 
 	public float speed;
 	public float jumpForce;
-
-	public bool Grounded;
+	public float doubleJumpForce;
+	public Transform groundCheck;
+	public LayerMask whatIsGround;
+	public bool Grounded; //onGround
+	private bool jump = false;
+	private bool doubleJump;
 	public bool attacking;
 	public bool lookLeft;
 	public int idAnimation;
@@ -47,6 +45,7 @@ private SpriteRenderer playerRender;
 
 	public Color hitColor;
 	public Color noHitColor;
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -125,9 +124,27 @@ private SpriteRenderer playerRender;
 			playerAnimator.SetTrigger("atackCrouch");
 		}		
 
-		if(Input.GetButtonDown("Jump") && Grounded == true && attacking == false){
+		/*if(Input.GetButtonDown("Jump") && Grounded == true && attacking == false){
 			playerRb.AddForce(new Vector2(0, jumpForce));
+		}*/
+
+/**************DOUBLE jUMP*********************************/
+		if (Grounded)
+			doubleJump = false;
+
+		if(Input.GetButtonDown("Jump") && (Grounded == true || !doubleJump) && attacking == false){
+			jump = true;
+			if(!doubleJump && !Grounded){
+				doubleJump = true;
+			}
+
+			if(jump){
+				playerRb.velocity = Vector2.zero;
+				playerRb.AddForce(Vector2.up * jumpForce);
+				jump = false;
+			}
 		}
+/*************DOUBLE jUMP**********************************/
 
 		if(attacking == true && Grounded == true){
 			h = 0;

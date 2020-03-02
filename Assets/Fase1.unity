@@ -3539,10 +3539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c04a21f80ffcf4ca1a007f837c3fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 1525774822}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 768
   vidaMax: 10
   vidaAtual: 0
   death: 0
@@ -3552,6 +3548,11 @@ MonoBehaviour:
   knockbackConfirm: 0
   speed: 2.5
   jumpForce: 400
+  doubleJumpForce: 350
+  groundCheck: {fileID: 1525774822}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 768
   Grounded: 0
   attacking: 0
   lookLeft: 0
