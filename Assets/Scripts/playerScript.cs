@@ -18,13 +18,14 @@ public class playerScript : MonoBehaviour {
 	public bool knockbackConfirm;
 
 	public float speed;
+	private bool isJumping;
+	private float jumpTimeCounter;
 	public float jumpForce;
-	public float doubleJumpForce;
+	public float jumpTime;
+	public bool doubleJump;
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
-	public bool Grounded; //onGround
-	private bool jump = false;
-	private bool doubleJump;
+	public bool Grounded; //onGround //isGrounded
 	public bool attacking;
 	public bool lookLeft;
 	public int idAnimation;
@@ -74,20 +75,27 @@ public class playerScript : MonoBehaviour {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 	void FixedUpdate() {
-		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
+
 		if(!death && !knockbackConfirm){
 			playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
 		}	else if(death == true){
 			playerRb.velocity = new Vector2(0, playerRb.velocity.y);
 		}
+
 		interagir();
+		//readyToClear = true;
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
 
+		/*ClearInputs();
+		ProcessInputs();*/
+
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
+
+		DoubleJumpEndPressionBotton();
 
 		if(!death && !knockbackConfirm){
 
@@ -124,27 +132,29 @@ public class playerScript : MonoBehaviour {
 			playerAnimator.SetTrigger("atackCrouch");
 		}		
 
-		/*if(Input.GetButtonDown("Jump") && Grounded == true && attacking == false){
+/**************PULO SIMPLES************************
+		if(Input.GetButtonDown("Jump") && Grounded == true && attacking == false){
 			playerRb.AddForce(new Vector2(0, jumpForce));
-		}*/
+		}
+************/
 
-/**************DOUBLE jUMP*********************************/
+/**************DOUBLE jUMP*********************************
 		if (Grounded)
 			doubleJump = false;
 
 		if(Input.GetButtonDown("Jump") && (Grounded == true || !doubleJump) && attacking == false){
-			jump = true;
+			isJumping = true;
 			if(!doubleJump && !Grounded){
 				doubleJump = true;
 			}
 
-			if(jump){
+			if(isJumping){
 				playerRb.velocity = Vector2.zero;
 				playerRb.AddForce(Vector2.up * jumpForce);
-				jump = false;
+				isJumping = false;
 			}
 		}
-/*************DOUBLE jUMP**********************************/
+*****************/
 
 		if(attacking == true && Grounded == true){
 			h = 0;
@@ -204,6 +214,58 @@ public class playerScript : MonoBehaviour {
 
 		dir.x = x;
 		
+	}
+
+	/*void PuloPressao(){
+		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
+
+		if(Input.GetButtonDown("Jump") && Grounded == true){
+			isJumping = true;
+			jumpTimeCounter = jumpTime;
+			playerRb.velocity = Vector2.up * jumpForce;
+		}
+
+		if(Input.GetButton("Jump") && isJumping == true){
+			if(jumpTimeCounter > 0){
+				playerRb.velocity = Vector2.up * jumpForce;
+				jumpTimeCounter -= Time.deltaTime;
+			} else {
+				isJumping = false;
+			}
+		}
+		
+		if(Input.GetButtonUp("Jump")){
+			isJumping = false;
+		}
+	}*/
+
+	void DoubleJumpEndPressionBotton(){
+		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
+
+		if (Grounded)
+			doubleJump = false;
+
+		if(Input.GetButtonDown("Jump") && (Grounded == true || !doubleJump) && attacking == false){
+			isJumping = true;
+			if(!doubleJump && !Grounded){
+				doubleJump = true;
+			}
+			jumpTimeCounter = jumpTime;
+			playerRb.velocity = Vector2.up * jumpForce;
+		}
+
+		if(Input.GetButton("Jump") && isJumping == true){
+			if(jumpTimeCounter > 0){
+				playerRb.velocity = Vector2.up * jumpForce;
+				jumpTimeCounter -= Time.deltaTime;
+			} else {
+				isJumping = false;
+			}
+		}
+		
+		if(Input.GetButtonUp("Jump")){
+			isJumping = false;
+		}
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
