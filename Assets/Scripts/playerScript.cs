@@ -89,9 +89,6 @@ public class playerScript : MonoBehaviour {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
 
-		/*ClearInputs();
-		ProcessInputs();*/
-
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
 

@@ -126,6 +126,7 @@ public class controleDanoInimigo : MonoBehaviour {
 					hpBar.localScale = new Vector3(percVida, 1,1);
 					
 					if(vidaAtual <= 0){
+						GetComponent<Collider2D>().enabled = false;
 						died = true;
 						animator.SetInteger("idAnimation", 3);
 						StartCoroutine("loot");
