@@ -16,6 +16,7 @@ public class _GameController : MonoBehaviour {
 	public int idPersonagem;
 	public int idPersonagemAtual;
 	public int vidaMaxima;
+	public int vidaAtualmente;
 	public int idArma;
 
 	[Header("Banco de Personagens")]
@@ -32,15 +33,11 @@ public class _GameController : MonoBehaviour {
 	public int[] danoMaxArma;
 	public int[] tipoDanoArma;
 
-	[Header("InfoPlayer")]
-	public int vidaMax;
-	public int vidaAtual;
-
 
 ///////////////////////////////////////////////////////////////////////////////////
 	void Start () {
 		DontDestroyOnLoad(this.gameObject);
-		vidaAtual = vidaMaxima;
+		vidaAtualmente = vidaMaxima;
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////

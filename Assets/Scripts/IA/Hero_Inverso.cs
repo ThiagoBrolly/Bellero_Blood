@@ -40,7 +40,7 @@ public class Hero_Inverso : MonoBehaviour {
 
 	public bool lookLeft;
 
-	private bool attacking;
+	public bool attacking;
 	public GameObject[] armas;
 
 

@@ -8,6 +8,7 @@ TagManager:
   - coletavel
   - door
   - inimigo
+  - damage
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - obstaculosInimigo
   - Player
   - playerInvencivel
-  - 
+  - hitBox
   - 
   - 
   - 

@@ -9,9 +9,7 @@ public class playerScript : MonoBehaviour {
 	private Rigidbody2D playerRb;
 	private SpriteRenderer playerRender;
 
-	public int vidaMax, vidaAtual;
-	public bool death;
-
+	//public int vidaMax, vidaAtual;
 	public float knockback;
 	public float knockbackCount;
 	public float knockbackLength;
@@ -22,13 +20,14 @@ public class playerScript : MonoBehaviour {
 	private float jumpTimeCounter;
 	public float jumpForce;
 	public float jumpTime;
-	public bool doubleJump;
+	private bool doubleJump;
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	public bool Grounded; //onGround //isGrounded
 	public bool attacking;
-	public bool lookLeft;
-	public int idAnimation;
+	public bool death;
+	private bool lookLeft;
+	private int idAnimation;
 	private float h, v;
 	public Collider2D standing, crounching;
 
@@ -55,17 +54,17 @@ public class playerScript : MonoBehaviour {
 		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
 
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
-		vidaMax = _GameController.vidaMaxima;
+		//vidaMax = _GameController.vidaMaxima;
+		//vidaAtual = _GameController.vidaAtualmente;
 		idArma = _GameController.idArma;
 		
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
 		playerRender = GetComponent<SpriteRenderer>();
 
-		vidaAtual = vidaMax;
+		//vidaAtual = vidaMax;
 
-		foreach (GameObject o in armas)
-		{
+		foreach (GameObject o in armas){
 			o.SetActive(false);
 		}
 
@@ -75,15 +74,10 @@ public class playerScript : MonoBehaviour {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 	void FixedUpdate() {
-
 		if(!death && !knockbackConfirm){
 			playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
-		}	else if(death == true){
-			playerRb.velocity = new Vector2(0, playerRb.velocity.y);
 		}
-
 		interagir();
-		//readyToClear = true;
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,100 +86,78 @@ public class playerScript : MonoBehaviour {
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
 
-		DoubleJumpEndPressionBotton();
-
 		if(!death && !knockbackConfirm){
+			DoubleJumpEndPressionBotton();
 
-		if(h > 0 && lookLeft == true && attacking == false){
-			flip();
-		}
-		else if(h < 0 && lookLeft == false && attacking == false){
-			flip();
-		}
-
-		if(v < 0){
-			idAnimation = 2;
-			if(Grounded == true){
+			if(h > 0 && lookLeft == true && attacking == false){
+				flip();
+			}
+			else if(h < 0 && lookLeft == false && attacking == false){
+				flip();
+			}
+			//ABAIXAR
+			if(v < 0){
+				idAnimation = 2;
+				if(Grounded == true){
+					h = 0;
+				}
+			}	else if(h !=0){
+				idAnimation = 1;
+			} else{
+				idAnimation = 0;
+			}
+			//ATACAR
+			if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao == null){
+				playerAnimator.SetTrigger("atack");
+			}
+			//ABRIR PORTA
+			if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao != null){
+				if(objetoInteracao.tag == "door"){
+					objetoInteracao.GetComponent<door>().tPlayer = this.transform;
+				}
+				objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
+				//ATACAR NO PULO
+			}	else if(Input.GetButtonDown("Fire1") && attacking == false && Grounded == false){ 
+				playerAnimator.SetTrigger("atackJump");
+				//ATACAR ABAIXADO
+			}	else if(Input.GetButtonDown("Fire1") && v < 0 && attacking == false && Grounded == true){ 
+				playerAnimator.SetTrigger("atackCrouch");
+			}		
+			//PARA DE ANDAR ENQUANTO ATACA
+			if(attacking == true && Grounded == true){
 				h = 0;
 			}
-		}	else if(h !=0){
-			idAnimation = 1;
-		} else{
-			idAnimation = 0;
-		}
-
-		if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao == null){
-			playerAnimator.SetTrigger("atack");
-		}
-
-		if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao != null){
-			if(objetoInteracao.tag == "door"){
-				objetoInteracao.GetComponent<door>().tPlayer = this.transform;
-			}
-			objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
-		}	else if(Input.GetButtonDown("Fire1") && attacking == false && Grounded == false){ 
-			playerAnimator.SetTrigger("atackJump");
-		}	else if(Input.GetButtonDown("Fire1") && v < 0 && attacking == false && Grounded == true){ 
-			playerAnimator.SetTrigger("atackCrouch");
-		}		
-
-/**************PULO SIMPLES************************
-		if(Input.GetButtonDown("Jump") && Grounded == true && attacking == false){
-			playerRb.AddForce(new Vector2(0, jumpForce));
-		}
-************/
-
-/**************DOUBLE jUMP*********************************
-		if (Grounded)
-			doubleJump = false;
-
-		if(Input.GetButtonDown("Jump") && (Grounded == true || !doubleJump) && attacking == false){
-			isJumping = true;
-			if(!doubleJump && !Grounded){
-				doubleJump = true;
-			}
-
-			if(isJumping){
-				playerRb.velocity = Vector2.zero;
-				playerRb.AddForce(Vector2.up * jumpForce);
-				isJumping = false;
+			//ALTERAR O COLLIDER MAIOR PARA O MENOR
+			if(v < 0 && Grounded == true){
+				crounching.enabled = true;
+				standing.enabled = false;
+			} else if(v >= 0 && Grounded == true){
+				crounching.enabled = false;
+				standing.enabled = true;
+			} else if(v != 0 && Grounded == false){
+				crounching.enabled = false;
+				standing.enabled = true;
 			}
 		}
-*****************/
 
-		if(attacking == true && Grounded == true){
-			h = 0;
+//RECEBER O NUMERO DE VIDA AO CARREGAR O GAME
+		if(_GameController.vidaAtualmente > _GameController.vidaMaxima){
+			_GameController.vidaAtualmente = _GameController.vidaMaxima;
 		}
-
-		if(v < 0 && Grounded == true){
-			crounching.enabled = true;
-			standing.enabled = false;
-		} else if(v >= 0 && Grounded == true){
-			crounching.enabled = false;
-			standing.enabled = true;
-		} else if(v != 0 && Grounded == false){
-			crounching.enabled = false;
-			standing.enabled = true;
+//MORRER QUANDO O NUMERO DE VIDAS CHEGAR A ZERO
+		if(_GameController.vidaAtualmente <= 0){
+			death = true;	
+			playerRb.velocity = new Vector2(0, playerRb.velocity.y);
+			this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");			
 		}
-		}
-
-////////////////////////
-		if(vidaAtual > vidaMax){
-			vidaAtual = vidaMax;
-		}
-		if(vidaAtual <= 0){
-			death = true;
-			//GetComponent<Collider2D>().enabled = false;
-			this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");
-		}
-
+////KNOCKBACK
 		if(knockbackConfirm){
 			knockbackCount -= Time.deltaTime;
 		}
 		if(knockbackCount <= 0){
 			knockbackConfirm = false;
 		}
-
+//CHAMANDO ANIMAÇÕES
 		playerAnimator.SetBool("grounded", Grounded);
 		playerAnimator.SetInteger("idAnimation", idAnimation);
 		playerAnimator.SetFloat("speedY", playerRb.velocity.y);
@@ -208,33 +180,8 @@ public class playerScript : MonoBehaviour {
 		float x = transform.localScale.x;
 		x *= -1;
 		transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
-
 		dir.x = x;
-		
 	}
-
-	/*void PuloPressao(){
-		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
-
-		if(Input.GetButtonDown("Jump") && Grounded == true){
-			isJumping = true;
-			jumpTimeCounter = jumpTime;
-			playerRb.velocity = Vector2.up * jumpForce;
-		}
-
-		if(Input.GetButton("Jump") && isJumping == true){
-			if(jumpTimeCounter > 0){
-				playerRb.velocity = Vector2.up * jumpForce;
-				jumpTimeCounter -= Time.deltaTime;
-			} else {
-				isJumping = false;
-			}
-		}
-		
-		if(Input.GetButtonUp("Jump")){
-			isJumping = false;
-		}
-	}*/
 
 	void DoubleJumpEndPressionBotton(){
 		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
@@ -280,14 +227,14 @@ public class playerScript : MonoBehaviour {
 
 /////////////////////////////////////////////////////////////////////////////////
 
-	public void Damage(int dmg){
-		vidaAtual -= dmg;
+	public void Damage(){
 		StartCoroutine("damageController");
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////
 
 	IEnumerator damageController(){
+		if(!death)
 		this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");  //MUDAR OBJETO DE LAYER
 		playerRender.color = hitColor;
 		yield return new WaitForSeconds(0.2f);
@@ -316,7 +263,7 @@ public class playerScript : MonoBehaviour {
 			knockbackConfirm = true;
 		}
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	public void knockbackLeft(){
 		if(death == false){
 			playerRb.velocity = new Vector2(-knockback, knockback);
@@ -324,7 +271,6 @@ public class playerScript : MonoBehaviour {
 			knockbackConfirm = true;
 		}
 	}
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -342,17 +288,13 @@ public class playerScript : MonoBehaviour {
 			balaoAlerta.SetActive(false);
 		}
 		
-		
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void controleArma(int id){
-
-		foreach (GameObject o in armas)
-		{
+		foreach (GameObject o in armas){
 			o.SetActive(false);
 		}
-
 		armas[id].SetActive(true);
 	}
 
@@ -362,15 +304,12 @@ public class playerScript : MonoBehaviour {
 		switch (col.gameObject.tag)
 		{
 			case "coletavel":
-
 				col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
-				
 			break;
 
-			case "inimigo":
-
-				_GameController.vidaAtual -= 1;
-				
+			case "damage":
+				_GameController.vidaAtualmente -= 1;
+				print("Dano");
 			break;
 		}
 	}
@@ -405,7 +344,5 @@ public class playerScript : MonoBehaviour {
 
 		idArmaAtual = idArma;
 	}
-
-
 
 }

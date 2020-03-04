@@ -8,7 +8,7 @@ public class chest : MonoBehaviour {
 	public Sprite[] imagemObjeto;
 	public bool open;
 	public GameObject[] loots;
-	private bool gerouLoot;
+	public bool gerouLoot;
 
 
 
