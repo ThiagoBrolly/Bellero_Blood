@@ -2,7 +2,7 @@
 Library
 Temp
 *.apk
-Assembly-CSharp.csproj Assembly-CSharp-Editor.csproj
-Bellero_Blood.sln
+*.csproj
+*.sln
 /build
 /.vscode
