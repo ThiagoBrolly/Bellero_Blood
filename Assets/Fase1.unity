@@ -4119,7 +4119,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4142,7 +4142,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259474031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.2900002, y: -0.34, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5658,7 +5658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1763804734
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5894,29 +5894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fb57bf1d751b74a9c1a3a057c9dc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaInimigo: 15
-  vidaAtual: 0
-  barrasVida: {fileID: 1198152257}
-  hpBar: {fileID: 0}
-  characterColor:
-  - {r: 1, g: 1, b: 1, a: 0}
-  - {r: 1, g: 0.35294116, b: 0.35294116, a: 0.566}
-  danoTxtPrefab: {fileID: 0}
-  ajusteDano:
-  - 0
-  - 50
-  - 0
-  olhandoEsquerda: 1
-  playerEsquerda: 0
-  knockForcePrefab: {fileID: 1603366352823414, guid: fe146d8103d808e4e934f2f99de98374,
-    type: 2}
-  knockPosition: {fileID: 1731549122}
-  knockX: 0.3
-  groundCheck: {fileID: 513344043}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  loots: {fileID: 1401022705505362, guid: 0734c9dea21773348926413a7e33582d, type: 2}
 --- !u!1 &1768011092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6592,7 +6569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!70 &1939686925
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -6644,24 +6621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fb57bf1d751b74a9c1a3a057c9dc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaInimigo: 10
-  vidaAtual: 0
-  barrasVida: {fileID: 0}
-  hpBar: {fileID: 0}
-  characterColor: []
-  danoTxtPrefab: {fileID: 0}
-  ajusteDano: []
-  olhandoEsquerda: 0
-  playerEsquerda: 0
-  knockForcePrefab: {fileID: 1603366352823414, guid: fe146d8103d808e4e934f2f99de98374,
-    type: 2}
-  knockPosition: {fileID: 1273034806}
-  knockX: 1
-  groundCheck: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  loots: {fileID: 0}
 --- !u!50 &1939686928
 Rigidbody2D:
   serializedVersion: 4
