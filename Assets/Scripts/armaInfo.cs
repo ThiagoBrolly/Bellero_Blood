@@ -8,4 +8,6 @@ public class armaInfo : MonoBehaviour {
 	public float danoMax;		// DANO MÁXIMO DA ARMA
 	
 	public int tipoDano;
+
+	//public float dano;
 }

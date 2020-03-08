@@ -48,12 +48,12 @@ public class Chasing : MonoBehaviour {
 		}
 
 		if(isWalkingToTheRight){
-			gameObject.GetComponent<SpriteRenderer>().flipX = false;
+			//gameObject.GetComponent<SpriteRenderer>().flipX = false;
 			transform.position = Vector3.MoveTowards(transform.position, pointWalkRight.transform.position, enemySpeed * Time.deltaTime);
 		}
 
 		if(isWalkingToTheLeft){
-			gameObject.GetComponent<SpriteRenderer>().flipX = true;
+			//gameObject.GetComponent<SpriteRenderer>().flipX = true;
 			transform.position = Vector3.MoveTowards(transform.position, pointWalkLeft.transform.position, enemySpeed * Time.deltaTime);
 		}
 		

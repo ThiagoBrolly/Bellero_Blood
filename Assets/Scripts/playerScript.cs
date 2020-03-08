@@ -24,7 +24,7 @@ public class playerScript : MonoBehaviour {
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	public bool Grounded; //onGround //isGrounded
-	public bool attacking;
+	public bool isAtack; //isAtack attacking
 	public bool death;
 	private bool lookLeft;
 	private int idAnimation;
@@ -45,6 +45,9 @@ public class playerScript : MonoBehaviour {
 
 	public Color hitColor;
 	public Color noHitColor;
+
+	public Transform mao;
+	public GameObject hitBoxPrefab;
 
 
 
@@ -89,10 +92,10 @@ public class playerScript : MonoBehaviour {
 		if(!death && !knockbackConfirm){
 			DoubleJumpEndPressionBotton();
 
-			if(h > 0 && lookLeft == true && attacking == false){
+			if(h > 0 && lookLeft == true && isAtack == false){
 				flip();
 			}
-			else if(h < 0 && lookLeft == false && attacking == false){
+			else if(h < 0 && lookLeft == false && isAtack == false){
 				flip();
 			}
 			//ABAIXAR
@@ -107,24 +110,26 @@ public class playerScript : MonoBehaviour {
 				idAnimation = 0;
 			}
 			//ATACAR
-			if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao == null){
+			if(Input.GetButtonDown("Fire1") && v >= 0 && isAtack == false && Grounded == true && objetoInteracao == null){
+				isAtack = true;
 				playerAnimator.SetTrigger("atack");
+				
 			}
 			//ABRIR PORTA
-			if(Input.GetButtonDown("Fire1") && v >= 0 && attacking == false && Grounded == true && objetoInteracao != null){
+			if(Input.GetButtonDown("Fire1") && v >= 0 && isAtack == false && Grounded == true && objetoInteracao != null){
 				if(objetoInteracao.tag == "door"){
 					objetoInteracao.GetComponent<door>().tPlayer = this.transform;
 				}
 				objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
 				//ATACAR NO PULO
-			}	else if(Input.GetButtonDown("Fire1") && attacking == false && Grounded == false){ 
+			}	else if(Input.GetButtonDown("Fire1") && isAtack == false && Grounded == false){ 
 				playerAnimator.SetTrigger("atackJump");
 				//ATACAR ABAIXADO
-			}	else if(Input.GetButtonDown("Fire1") && v < 0 && attacking == false && Grounded == true){ 
+			}	else if(Input.GetButtonDown("Fire1") && v < 0 && isAtack == false && Grounded == true){ 
 				playerAnimator.SetTrigger("atackCrouch");
 			}		
 			//PARA DE ANDAR ENQUANTO ATACA
-			if(attacking == true && Grounded == true){
+			if(isAtack == true && Grounded == true){
 				h = 0;
 			}
 			//ALTERAR O COLLIDER MAIOR PARA O MENOR
@@ -163,6 +168,17 @@ public class playerScript : MonoBehaviour {
 		playerAnimator.SetFloat("speedY", playerRb.velocity.y);
 		playerAnimator.SetBool("Death", death);
 		playerAnimator.SetBool("KnockB", knockbackConfirm);
+		playerAnimator.SetBool("isAtack", isAtack);
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+	void OnEndAtack(){
+		isAtack = false;
+	}
+
+	void HitBoxAtack(){
+		GameObject hitBoxTemp = Instantiate(hitBoxPrefab, mao.position, transform.localRotation);
+		Destroy(hitBoxTemp, 0.2f);
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -189,18 +205,20 @@ public class playerScript : MonoBehaviour {
 		if (Grounded)
 			doubleJump = false;
 
-		if(Input.GetButtonDown("Jump") && (Grounded == true || !doubleJump) && attacking == false){
+		if(Input.GetButtonDown("Jump") && (Grounded == true || !doubleJump) && isAtack == false){
 			isJumping = true;
 			if(!doubleJump && !Grounded){
 				doubleJump = true;
 			}
 			jumpTimeCounter = jumpTime;
 			playerRb.velocity = Vector2.up * jumpForce;
+			//playerRb.AddForce(new Vector2(0, jumpForce));
 		}
 
 		if(Input.GetButton("Jump") && isJumping == true){
 			if(jumpTimeCounter > 0){
 				playerRb.velocity = Vector2.up * jumpForce;
+				//playerRb.AddForce(new Vector2(0, jumpForce));
 				jumpTimeCounter -= Time.deltaTime;
 			} else {
 				isJumping = false;
@@ -212,8 +230,12 @@ public class playerScript : MonoBehaviour {
 		}
 	}
 
+	/*if(Input.GetButtonDown("Jump") && isGrounded == true){
+			playerRb.AddForce(new Vector2(0, jumpForce)); // Pulo
+		}*/
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-	void atack(int atk){
+	/*void atack(int atk){
 		switch(atk){
 			case 0:
 				attacking = false;
@@ -224,6 +246,10 @@ public class playerScript : MonoBehaviour {
 				break;
 		}
 	}
+
+	/*void OnEndAtack(){
+		attacking = false;
+	}*/
 
 /////////////////////////////////////////////////////////////////////////////////
 
