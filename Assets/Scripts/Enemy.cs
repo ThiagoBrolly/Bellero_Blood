@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour {
 
 	private bool getHit; 	//INDICA SE TOMOU DANO
 
+	private Transform filho;
+
 	
 
 	void Start () {
@@ -51,6 +53,8 @@ public class Enemy : MonoBehaviour {
 			barrasVida.transform.localScale = new Vector3(x, barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
 
 		}
+
+		filho = transform.Find("HitBoxInimigo");
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,9 +142,13 @@ public class Enemy : MonoBehaviour {
 					
 					if(vidaAtual <= 0){
 						death = true;
+						this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");
 						//anim.SetBool("Death", death);
 						anim.SetInteger("Die", 5);
+						//filho.GetComponent<Collider2D>().enabled = false; DESABILITA O COMPONENTE
+						filho.gameObject.SetActive(false);  //DESABILITA O OBJETO
 						Destroy(this.gameObject, 2);
+						
 					}
 
 					//print("Inimigo tomou " + danoTomado + " de Dano do tipo " + _GameController.tiposDano[tipoDano]);
