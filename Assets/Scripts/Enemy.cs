@@ -33,6 +33,12 @@ public class Enemy : MonoBehaviour {
 
 	private Transform filho;
 
+	public Transform groundCheck;
+	public LayerMask whatIsGround;
+
+	[Header("Configuração de Loot")]
+	public GameObject loots;
+
 	
 
 	void Start () {
@@ -94,6 +100,26 @@ public class Enemy : MonoBehaviour {
 		barrasVida.transform.localScale = new Vector3(x, barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
 	}
 
+	IEnumerator loot(){ // EFEITO DEPOIS DA MORTE DO INIMIGO
+		yield return new WaitForSeconds(1);
+		GameObject fxMorte = Instantiate(_GameController.fxMorte, groundCheck.position, transform.localRotation);
+		yield return new WaitForSeconds(1);
+		sRender.enabled = false;
+
+		//CONTROLE DE LOOT
+		int qtdMoedas = Random.Range(1,5);
+		for(int l = 0; l < qtdMoedas; l++){
+			GameObject lootTemp = Instantiate(loots, transform.position, transform.localRotation);	//CHAMA A MOEDA
+			lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-25, 25), 90));	//JOGA A MOEDA
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		yield return new WaitForSeconds(3);
+		Destroy(fxMorte);
+		Destroy(this.gameObject);
+	}
+
+
 	IEnumerator invuneravel(){
 		sRender.color = characterColor[1];
 		yield return new WaitForSeconds(0.1f);
@@ -147,12 +173,15 @@ public class Enemy : MonoBehaviour {
 						anim.SetInteger("Die", 5);
 						//filho.GetComponent<Collider2D>().enabled = false; DESABILITA O COMPONENTE
 						filho.gameObject.SetActive(false);  //DESABILITA O OBJETO
-						Destroy(this.gameObject, 2);
+						StartCoroutine("loot"); // CHAMA A ANIMAÇÃO POS MORTE
 						
 					}
 
 					//print("Inimigo tomou " + danoTomado + " de Dano do tipo " + _GameController.tiposDano[tipoDano]);
 					//Destroy(hitBoxInimigo);
+
+					GameObject fxTemp = Instantiate(_GameController.fxDano[tipoDano], transform.position, transform.localRotation);
+					Destroy(fxTemp, 1);
 
 					GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation);
 					Destroy(knockTemp, 0.02f);

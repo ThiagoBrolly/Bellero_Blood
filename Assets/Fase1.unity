@@ -1615,6 +1615,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb0005f18cd147d44bd47c5b989f1ba9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &133941094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 133941095}
+  m_Layer: 10
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &133941095
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 133941094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.579, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1939686931}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &156583181
 GameObject:
   m_ObjectHideFlags: 0
@@ -6892,6 +6920,11 @@ MonoBehaviour:
   knockForcePrefab: {fileID: 0}
   knockPosition: {fileID: 0}
   knockX: 0
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  loots: {fileID: 0}
 --- !u!1 &1768011092
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,6 +7668,11 @@ MonoBehaviour:
     type: 2}
   knockPosition: {fileID: 1759205111}
   knockX: 0.3
+  groundCheck: {fileID: 133941095}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  loots: {fileID: 1571098434461896, guid: 597047419a1dbbd4c80694c077a431bf, type: 2}
 --- !u!50 &1939686928
 Rigidbody2D:
   serializedVersion: 4
@@ -7736,6 +7774,7 @@ Transform:
   - {fileID: 1866617353}
   - {fileID: 1071875108}
   - {fileID: 1638638077}
+  - {fileID: 133941095}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
