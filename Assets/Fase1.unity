@@ -1553,7 +1553,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 95596767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.43, y: -0.34, z: 0}
+  m_LocalPosition: {x: -0.65, y: -0.34, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 1450739267}
@@ -1723,7 +1723,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 170430223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.43, y: -1, z: 0}
+  m_LocalPosition: {x: 5.26, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3265,7 +3265,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 675820370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.398, y: 0.884, z: 0}
+  m_LocalPosition: {x: -0.73, y: 0.884, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1638638077}
@@ -3989,7 +3989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1071875108
 Transform:
   m_ObjectHideFlags: 0
@@ -4891,7 +4891,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259474031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2900002, y: -0.34, z: -10}
+  m_LocalPosition: {x: -0.6500002, y: -0.34, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4975,7 +4975,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271938660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.82, y: -1, z: 0}
+  m_LocalPosition: {x: -1.16, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5323,7 +5323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1395050771
 Transform:
   m_ObjectHideFlags: 0
@@ -6089,7 +6089,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1252815727}
+  m_Follow: {fileID: 95596777}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 3
@@ -6104,7 +6104,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635725236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2900002, y: -0.34, z: -10}
+  m_LocalPosition: {x: -0.6500002, y: -0.34, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 397801206}
@@ -6925,6 +6925,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   loots: {fileID: 0}
+  currentEstadoDoInimigo: 0
+  velocidadeBase: 0
+  velocidade: 0
+  tempoEsperaIdle: 0
+  tempoRecuo: 0
+  distanciaMudarRota: 0
+  layerObstaculos:
+    serializedVersion: 2
+    m_Bits: 0
+  distanciaVerPersonagem: 0
+  distanciaAtaque: 0
+  distanciaSairAlerta: 0
+  layerPersonagem:
+    serializedVersion: 2
+    m_Bits: 0
+  isAtack: 0
 --- !u!1 &1768011092
 GameObject:
   m_ObjectHideFlags: 0
@@ -7354,7 +7370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1866617353
 Transform:
   m_ObjectHideFlags: 0
@@ -7589,6 +7605,7 @@ GameObject:
   - component: {fileID: 1939686930}
   - component: {fileID: 1939686928}
   - component: {fileID: 1939686929}
+  - component: {fileID: 1939686934}
   - component: {fileID: 1939686927}
   - component: {fileID: 1939686926}
   - component: {fileID: 1939686932}
@@ -7622,13 +7639,13 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939686924}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c57c3380576ee114aae246da976ea2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isWalking: 0
-  pointWalkRight: {fileID: 1866617353}
+  pointWalkRight: {fileID: 0}
   pointWalkLeft: {fileID: 1395050771}
   pointAttack: {fileID: 1071875108}
   isWalkingToTheRight: 0
@@ -7651,7 +7668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fb57bf1d751b74a9c1a3a057c9dc8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaInimigo: 15
+  vidaInimigo: 25
   vidaAtual: 0
   barrasVida: {fileID: 1638638076}
   hpBar: {fileID: 675820371}
@@ -7662,7 +7679,7 @@ MonoBehaviour:
   - 0
   - 50
   - 0
-  olhandoEsquerda: 1
+  olhandoEsquerda: 0
   playerEsquerda: 0
   knockForcePrefab: {fileID: 1603366352823414, guid: fe146d8103d808e4e934f2f99de98374,
     type: 2}
@@ -7673,6 +7690,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   loots: {fileID: 1571098434461896, guid: 597047419a1dbbd4c80694c077a431bf, type: 2}
+  currentEstadoDoInimigo: 2
+  velocidadeBase: 1.5
+  velocidade: 1.5
+  tempoEsperaIdle: 1
+  tempoRecuo: 1
+  distanciaMudarRota: 1
+  layerObstaculos:
+    serializedVersion: 2
+    m_Bits: 4096
+  distanciaVerPersonagem: 2
+  distanciaAtaque: 1.4
+  distanciaSairAlerta: 3
+  layerPersonagem:
+    serializedVersion: 2
+    m_Bits: 8192
+  isAtack: 0
 --- !u!50 &1939686928
 Rigidbody2D:
   serializedVersion: 4
@@ -7765,7 +7798,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939686924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.32, y: -1.18, z: 0}
+  m_LocalPosition: {x: 1.81, y: -1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1759205111}
@@ -7789,6 +7822,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee4ac68f45dec145bda0083325389e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1939686934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1939686924}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fe2ab59885fca4aa5b8ac45501ba87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemyState: 0
+  stateInicial: 0
+  velocidadeBase: 2
+  velocidade: 0
+  tempoEsperaIdle: 3
+  tempoRecuo: 2
+  distanciaMudarRota: 0.5
+  layerObstaculos:
+    serializedVersion: 2
+    m_Bits: 4096
+  distanciaVerPersonagem: 3
+  distanciaAtaque: 0.8
+  distanciaSairAlerta: 4
+  layerPersonagem:
+    serializedVersion: 2
+    m_Bits: 8192
+  lookLeft: 0
+  isAtack: 0
 --- !u!1 &2046347639
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class Chasing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		anim.SetBool("Chasing", isWalking);
+		anim.SetBool("isWalk", isWalking);
 
 		isWalkingToTheRight = Physics2D.OverlapCircle(pointWalkRight.position, WalkingRadius, layerPlayer);
 		isWalkingToTheLeft = Physics2D.OverlapCircle(pointWalkLeft.position, WalkingRadius, layerPlayer);

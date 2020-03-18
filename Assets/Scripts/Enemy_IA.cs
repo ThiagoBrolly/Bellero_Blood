@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum enemyState{
+	PARADO,
+	ALERTA,
+	PATRULHA,
+	ATACK,
+	RECUAR
+}
 
-/*public enum enemyState{
-		PARADO,
-		ALERTA,
-		PATRULHA,
-		ATACK,
-		RECUAR
-	}*/
-
-public class Hero_Inverso : MonoBehaviour {
-
+public class Enemy_IA : MonoBehaviour {
 	private playerScript playerScript;
 
 	private Rigidbody2D rBody;
@@ -36,15 +34,13 @@ public class Hero_Inverso : MonoBehaviour {
 	public float distanciaSairAlerta;
 	public LayerMask layerPersonagem;
 
-	public GameObject alert;
-
 	public bool lookLeft;
 
-	public bool attacking;
-	public GameObject[] armas;
 
-
+	public bool isAtack;
 	
+
+
 
 
 
@@ -56,46 +52,46 @@ public class Hero_Inverso : MonoBehaviour {
 		rBody = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 
+		//velocidade = velocidadeBase;
 		if(lookLeft == true){
 			flip();
 		}
-		
+
 		chageState(stateInicial);
+		
 	}
+
+
+
+
 	
 	// Update is called once per frame
 	void Update () {
 		if(currentEnemyState != enemyState.ATACK && currentEnemyState != enemyState.RECUAR){
-
-			Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.red);
-			RaycastHit2D hitPersonagem = Physics2D.Raycast(transform.position, dir, distanciaVerPersonagem, layerPersonagem);
-			if(hitPersonagem == true){
-				chageState(enemyState.ALERTA);
-			}
-
+		Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.red);
+		RaycastHit2D hitPersonagem = Physics2D.Raycast(transform.position, dir, distanciaVerPersonagem, layerPersonagem);
+		if(hitPersonagem == true){
+			chageState(enemyState.ALERTA);
 		}
-		
-
+		}
 
 		if(currentEnemyState == enemyState.PATRULHA){
+		Debug.DrawRay(transform.position, dir * distanciaMudarRota, Color.red);
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
 
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
-
-			if(hit == true){
-				chageState(enemyState.PARADO);
-			}
+		if(hit == true){
+			chageState(enemyState.PARADO);
+		}
 		}
 
-		if(currentEnemyState == enemyState.RECUAR){
+		rBody.velocity = new Vector2(velocidade, rBody.velocity.y);
 
-			RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
-
-			if(hit == true){
-				flip();
-			}
+		if(velocidade == 0){
+			animator.SetBool("isWalk", false);
 		}
-
-		
+		else if(velocidade != 0){
+			animator.SetBool("isWalk", true);
+		}
 
 
 		if(currentEnemyState == enemyState.ALERTA){
@@ -109,14 +105,10 @@ public class Hero_Inverso : MonoBehaviour {
 			}
 		}
 
-		if(currentEnemyState != enemyState.ALERTA){
-			alert.SetActive(false);
-		}
+		/*if(currentEnemyState != enemyState.ALERTA){
 
-		rBody.velocity = new Vector2(velocidade, rBody.velocity.y);
+		}*/
 
-		if(velocidade == 0){ animator.SetInteger("idAnimation", 0);}
-		else if(velocidade != 0){ animator.SetInteger("idAnimation", 1);}
 		
 	}
 
@@ -129,13 +121,9 @@ public class Hero_Inverso : MonoBehaviour {
 		float x = transform.localScale.x;
 		x *= -1;
 		transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
-		dir.x = x;
 		velocidadeBase *= -1;
-		float vAtual = velocidade * -1;
-		velocidade = vAtual;
-		
+		dir.x = x;
 	}
-
 
 
 
@@ -144,14 +132,14 @@ public class Hero_Inverso : MonoBehaviour {
 		yield return new WaitForSeconds(tempoEsperaIdle);
 		flip();
 		chageState(enemyState.PATRULHA);
-		
 	}
+
 
 	IEnumerator recuar(){
 		yield return new WaitForSeconds(tempoRecuo);
-		flip();
 		chageState(enemyState.ALERTA);
 	}
+
 
 	void chageState(enemyState newState){
 		currentEnemyState = newState;
@@ -160,61 +148,25 @@ public class Hero_Inverso : MonoBehaviour {
 				velocidade = 0;
 				StartCoroutine("idle");
 				break;
-
+			
 			case enemyState.PATRULHA:
 				velocidade = velocidadeBase;
 				break;
-			
+
 			case enemyState.ALERTA:
 				velocidade = 0;
-				alert.SetActive(true);
 				break;
 
 			case enemyState.ATACK:
+				isAtack = true;
 				animator.SetTrigger("atack");
+				chageState(enemyState.RECUAR);
 				break;
-			
+
 			case enemyState.RECUAR:
-				flip();
-				velocidade = velocidadeBase * 2;
 				StartCoroutine("recuar");
 				break;
 		}
 	}
 
-
-
-
-	void atack(int atk){
-		switch(atk){
-			case 0:
-				attacking = false;
-				armas[3].SetActive(false);
-				chageState(enemyState.RECUAR);
-				break;
-			case 1:
-				attacking = true;
-				break;
-		}
-	}
-
-
-
-
-	void controleArma(int id){
-
-		foreach (GameObject o in armas)
-		{
-			o.SetActive(false);
-		}
-
-		armas[id].SetActive(true);
-	}
-
-
-
-
-	public void tomeiHit(){
-		chageState(enemyState.ALERTA);
-	}
 }
