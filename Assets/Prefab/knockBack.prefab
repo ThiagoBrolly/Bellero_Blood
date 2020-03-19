@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1603366352823414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4751971, y: -1.2016798, z: 0.07176396}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +69,7 @@ PointEffector2D:
     m_Bits: 1024
   m_ForceMagnitude: 80
   m_ForceVariation: 0
-  m_DistanceScale: 1
+  m_DistanceScale: 0.0001
   m_ForceSource: 1
   m_ForceTarget: 0
   m_ForceMode: 0
