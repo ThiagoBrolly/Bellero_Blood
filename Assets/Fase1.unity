@@ -1483,6 +1483,7 @@ MonoBehaviour:
   knockbackCount: 0
   knockbackLength: 0.5
   knockbackConfirm: 0
+  vida: 0
   speed: 2.5
   jumpForce: 6
   jumpTime: 0.15
@@ -2429,9 +2430,8 @@ MonoBehaviour:
   layerObstaculos:
     serializedVersion: 2
     m_Bits: 4096
-  distanciaVerPersonagem: 4
   distanciaAtaque: 1.4
-  distanciaSeguir: 3
+  distanciaSeguir: 1.41
   distanciaSairAlerta: 5
   layerPersonagem:
     serializedVersion: 2
@@ -4491,7 +4491,7 @@ MonoBehaviour:
   idPersonagem: 0
   idPersonagemAtual: 0
   vidaMaxima: 5
-  vidaAtualmente: 3
+  vidaAtualmente: 0
   idArma: 0
   nomePersonagem:
   - 
@@ -5222,7 +5222,6 @@ MonoBehaviour:
   layerObstaculos:
     serializedVersion: 2
     m_Bits: 4096
-  distanciaVerPersonagem: 2.5
   distanciaAtaque: 1.2
   distanciaSeguir: 2
   distanciaSairAlerta: 3.5
@@ -5242,7 +5241,7 @@ GameObject:
   - component: {fileID: 1176329550}
   m_Layer: 10
   m_Name: HitBoxArmaInimigo
-  m_TagString: Untagged
+  m_TagString: damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5616,6 +5615,7 @@ MonoBehaviour:
   knockbackCount: 0
   knockbackLength: 0.5
   knockbackConfirm: 0
+  vida: 0
   speed: 2.5
   jumpForce: 5
   jumpTime: 0.3
@@ -8548,6 +8548,14 @@ Prefab:
     - target: {fileID: 1285956535897828, guid: 6dcc598ea91c7bf43803f96213389332, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285956535897828, guid: 6dcc598ea91c7bf43803f96213389332, type: 2}
+      propertyPath: m_TagString
+      value: damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285956535897828, guid: 6dcc598ea91c7bf43803f96213389332, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6dcc598ea91c7bf43803f96213389332, type: 2}

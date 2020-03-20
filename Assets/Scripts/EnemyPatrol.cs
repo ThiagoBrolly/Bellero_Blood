@@ -66,7 +66,7 @@ public class EnemyPatrol : MonoBehaviour {
 	public float distanciaMudarRota;
 	public LayerMask layerObstaculos;
 
-	public float distanciaVerPersonagem;
+	//public float distanciaVerPersonagem;
 	public float distanciaAtaque;
 	public float distanciaSeguir;
 	public float distanciaSairAlerta;
@@ -172,7 +172,7 @@ public class EnemyPatrol : MonoBehaviour {
 
 
 
-		if(currentEstadoDoInimigo == StateInimigo.PATRULHA){
+		if(currentEstadoDoInimigo == StateInimigo.PATRULHA ){
 			
 			if(hitObstaculos == true){
 				chageState(StateInimigo.PARADO);
@@ -187,7 +187,7 @@ public class EnemyPatrol : MonoBehaviour {
 
 		}
 
-		if(currentEstadoDoInimigo == StateInimigo.ALERTA){
+		if(currentEstadoDoInimigo == StateInimigo.ALERTA && playerScript.death == false){
 			if (olhandoEsquerda == false && playerEsquerda == true){
 				flip();
 			} else if (olhandoEsquerda == true && playerEsquerda == false){
@@ -203,7 +203,7 @@ public class EnemyPatrol : MonoBehaviour {
 			}
 		}
 
-		if(currentEstadoDoInimigo == StateInimigo.SEGUIR /*&& currentEstadoDoInimigo != StateInimigo.ATACK*/){
+		if(currentEstadoDoInimigo == StateInimigo.SEGUIR && playerScript.death == false/*&& currentEstadoDoInimigo != StateInimigo.ATACK*/){
 			if(dist <= distanciaAtaque){
 				chageState(StateInimigo.ATACK);
 			}

@@ -14,6 +14,7 @@ public class playerScript : MonoBehaviour {
 	public float knockbackCount;
 	public float knockbackLength;
 	public bool knockbackConfirm;
+	public int vida;
 
 	public float speed;
 	private bool isJumping;
@@ -66,6 +67,7 @@ public class playerScript : MonoBehaviour {
 		playerRender = GetComponent<SpriteRenderer>();
 
 		//vidaAtual = vidaMax;
+		
 
 		foreach (GameObject o in armas){
 			o.SetActive(false);
@@ -85,6 +87,7 @@ public class playerScript : MonoBehaviour {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
+		vida = _GameController.vidaAtualmente;
 
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
