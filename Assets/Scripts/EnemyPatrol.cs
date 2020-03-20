@@ -246,6 +246,7 @@ public class EnemyPatrol : MonoBehaviour {
 		chageState(StateInimigo.ALERTA);
 	}
 
+
 	IEnumerator tomouDano(){
 		anim.SetBool("hit", getHit);
 		yield return new WaitForSeconds(0.5f);
