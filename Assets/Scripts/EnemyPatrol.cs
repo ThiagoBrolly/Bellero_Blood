@@ -154,51 +154,56 @@ public class EnemyPatrol : MonoBehaviour {
 
 		float dist = Vector3.Distance(transform.position, playerScript.transform.position);
 
-		if(currentEstadoDoInimigo == StateInimigo.PATRULHA){
-			
-
 			Debug.DrawRay(transform.position, dir * distanciaMudarRota, Color.yellow);
 			hitObstaculos = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
 
-			Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.red);
+			/*Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.red);
 			hitSeguirDir = Physics2D.Raycast(transform.position, dir, distanciaSeguir, layerPersonagem);
 
-			Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.red);
-			hitSeguirEsq = Physics2D.Raycast(transform.position, dir, distanciaSeguir, layerPersonagem);
+			Debug.DrawRay(transform.position, esq * distanciaVerPersonagem, Color.red);
+			hitSeguirEsq = Physics2D.Raycast(transform.position, esq, distanciaSeguir, layerPersonagem);*/
 
-			Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.green);
+			/*Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.green);
 			hitVerPersonagemDir = Physics2D.Raycast(transform.position, dir, distanciaVerPersonagem, layerPersonagem);
 
-			Debug.DrawRay(transform.position, esq * distanciaVerPersonagem, Color.green);
-			hitVerPersonagemEsq = Physics2D.Raycast(transform.position, esq, distanciaVerPersonagem, layerPersonagem);
+			Debug.DrawRay(transform.position, esq * distanciaVerPersonagem, Color.blue);
+			hitVerPersonagemEsq = Physics2D.Raycast(transform.position, esq, distanciaVerPersonagem, layerPersonagem);*/
 
+
+
+
+		if(currentEstadoDoInimigo == StateInimigo.PATRULHA){
 			
-
 			if(hitObstaculos == true){
 				chageState(StateInimigo.PARADO);
 			}
 
-			if(hitVerPersonagemDir == true ){
+			/*if(hitVerPersonagemEsq == true || hitVerPersonagemDir == true ){
+				chageState(StateInimigo.ALERTA);
+			}*/
+			else if(dist > distanciaAtaque && dist < distanciaSeguir/* && dist < distanciaSairAlerta*/){
 				chageState(StateInimigo.ALERTA);
 			}
 
 		}
 
 		if(currentEstadoDoInimigo == StateInimigo.ALERTA){
-			if(dist > distanciaAtaque && dist <= distanciaSeguir && dist < distanciaSairAlerta){
-				chageState(StateInimigo.SEGUIR);
+			if (olhandoEsquerda == false && playerEsquerda == true){
+				flip();
+			} else if (olhandoEsquerda == true && playerEsquerda == false){
+				flip();
 			}
-
-			else if(dist <= distanciaAtaque){
+			
+			if(dist <= distanciaAtaque){
 				chageState(StateInimigo.ATACK);
 			}
 			
-			else if(dist >= distanciaSairAlerta){
-				chageState(StateInimigo.PARADO);
+			else if(dist >= distanciaSeguir){
+				chageState(StateInimigo.SEGUIR);
 			}
 		}
 
-		if(currentEstadoDoInimigo == StateInimigo.SEGUIR && currentEstadoDoInimigo != StateInimigo.ATACK){
+		if(currentEstadoDoInimigo == StateInimigo.SEGUIR /*&& currentEstadoDoInimigo != StateInimigo.ATACK*/){
 			if(dist <= distanciaAtaque){
 				chageState(StateInimigo.ATACK);
 			}
