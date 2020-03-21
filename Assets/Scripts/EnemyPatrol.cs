@@ -170,9 +170,9 @@ public class EnemyPatrol : MonoBehaviour {
 			hitVerPersonagemEsq = Physics2D.Raycast(transform.position, esq, distanciaVerPersonagem, layerPersonagem);*/
 
 
+		
 
-
-		if(currentEstadoDoInimigo == StateInimigo.PATRULHA ){
+		if(currentEstadoDoInimigo == StateInimigo.PATRULHA){
 			
 			if(hitObstaculos == true){
 				chageState(StateInimigo.PARADO);
@@ -181,8 +181,12 @@ public class EnemyPatrol : MonoBehaviour {
 			/*if(hitVerPersonagemEsq == true || hitVerPersonagemDir == true ){
 				chageState(StateInimigo.ALERTA);
 			}*/
-			else if(dist > distanciaAtaque && dist < distanciaSeguir/* && dist < distanciaSairAlerta*/){
+			if(dist > distanciaAtaque && dist < distanciaSeguir/* && dist < distanciaSairAlerta*/){
 				chageState(StateInimigo.ALERTA);
+			}
+
+			if(playerScript.death == true){
+				chageState(StateInimigo.PATRULHA);
 			}
 
 		}
@@ -216,6 +220,7 @@ public class EnemyPatrol : MonoBehaviour {
 		if(getHit == true){
 			chageState(StateInimigo.DANO);
 		}
+		
 	}
 	
 
@@ -249,7 +254,7 @@ public class EnemyPatrol : MonoBehaviour {
 
 	IEnumerator tomouDano(){
 		anim.SetBool("hit", getHit);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.1f);
 		anim.SetBool("hit", false);
 		//chageState(StateInimigo.PARADO);
 	}

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 50794842806224832}
   - component: {fileID: 58657007885373878}
   - component: {fileID: 114906067895937238}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Coin
   m_TagString: coletavel
   m_Icon: {fileID: 0}
