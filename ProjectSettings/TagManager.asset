@@ -58,6 +58,9 @@ TagManager:
   - name: plataformas
     uniqueID: 3699910543
     locked: 0
+  - name: Player
+    uniqueID: 1735388961
+    locked: 0
   - name: Decoracao Primeiro Plano
     uniqueID: 902547513
     locked: 0
