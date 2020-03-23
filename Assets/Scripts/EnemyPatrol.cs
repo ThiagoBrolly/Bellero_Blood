@@ -44,7 +44,6 @@ public class EnemyPatrol : MonoBehaviour {
 	private Transform filho;
 
 	public Transform groundCheck;
-	public LayerMask whatIsGround;
 
 	[Header("Configuração de Loot")]
 	public GameObject loots;
@@ -58,28 +57,21 @@ public class EnemyPatrol : MonoBehaviour {
 	public float velocidade;
 
 	public float tempoEsperaIdle;
-	public float tempoRecuo;
 
 	private Vector3 dir = Vector3.right;
-	private Vector3 esq = Vector3.left;
 
 	public float distanciaMudarRota;
 	public LayerMask layerObstaculos;
 
-	//public float distanciaVerPersonagem;
 	public float distanciaAtaque;
 	public float distanciaSeguir;
 	public float distanciaSairAlerta;
-	public LayerMask layerPersonagem;
-	
 
 	public bool isAtack;
 
 	RaycastHit2D hitObstaculos;
-	RaycastHit2D hitVerPersonagemDir;
-	RaycastHit2D hitVerPersonagemEsq;
-	RaycastHit2D hitSeguirDir;
-	RaycastHit2D hitSeguirEsq;
+
+	public bool obstaculo;
 
 	
 	
@@ -92,11 +84,14 @@ public class EnemyPatrol : MonoBehaviour {
 		rBody = GetComponent<Rigidbody2D>();
 
 		sRender.color = characterColor[0];  //INICIA O INIMIGO NA COR 0 // COR NORMAL
-		//barrasVida.SetActive(false);	//DESABILITA A BARRA DE VIDA AO INICIAR O JOGO
+		barrasVida.SetActive(false);	//DESABILITA A BARRA DE VIDA AO INICIAR O JOGO
 		vidaAtual = vidaInimigo;
 		hpBar.localScale = new Vector3(1,1,1); // INICIA O TAMANHO DA BARRA DE VIDA
 
 		filho = transform.Find("HitBoxInimigo");
+		
+
+		obstaculo = hitObstaculos;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -154,39 +149,22 @@ public class EnemyPatrol : MonoBehaviour {
 
 		float dist = Vector3.Distance(transform.position, playerScript.transform.position);
 
-			Debug.DrawRay(transform.position, dir * distanciaMudarRota, Color.yellow);
-			hitObstaculos = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
+		Debug.DrawRay(transform.position, dir * distanciaMudarRota, Color.yellow);
+		hitObstaculos = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
 
-			/*Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.red);
-			hitSeguirDir = Physics2D.Raycast(transform.position, dir, distanciaSeguir, layerPersonagem);
-
-			Debug.DrawRay(transform.position, esq * distanciaVerPersonagem, Color.red);
-			hitSeguirEsq = Physics2D.Raycast(transform.position, esq, distanciaSeguir, layerPersonagem);*/
-
-			/*Debug.DrawRay(transform.position, dir * distanciaVerPersonagem, Color.green);
-			hitVerPersonagemDir = Physics2D.Raycast(transform.position, dir, distanciaVerPersonagem, layerPersonagem);
-
-			Debug.DrawRay(transform.position, esq * distanciaVerPersonagem, Color.blue);
-			hitVerPersonagemEsq = Physics2D.Raycast(transform.position, esq, distanciaVerPersonagem, layerPersonagem);*/
-
-
-		
-
+			
 		if(currentEstadoDoInimigo == StateInimigo.PATRULHA){
 			
 			if(hitObstaculos == true){
+				obstaculo = true;
 				chageState(StateInimigo.PARADO);
 			}
-
-			/*if(hitVerPersonagemEsq == true || hitVerPersonagemDir == true ){
-				chageState(StateInimigo.ALERTA);
-			}*/
-			if(dist > distanciaAtaque && dist < distanciaSeguir/* && dist < distanciaSairAlerta*/){
-				chageState(StateInimigo.ALERTA);
+			else{
+				obstaculo = false;
 			}
 
-			if(playerScript.death == true){
-				chageState(StateInimigo.PATRULHA);
+			if(dist > distanciaAtaque && dist < distanciaSeguir){
+				chageState(StateInimigo.ALERTA);
 			}
 
 		}
@@ -202,12 +180,19 @@ public class EnemyPatrol : MonoBehaviour {
 				chageState(StateInimigo.ATACK);
 			}
 			
-			else if(dist >= distanciaSeguir){
+			else if(dist >= distanciaSeguir && hitObstaculos == false){
 				chageState(StateInimigo.SEGUIR);
 			}
 		}
 
+
+
 		if(currentEstadoDoInimigo == StateInimigo.SEGUIR && playerScript.death == false/*&& currentEstadoDoInimigo != StateInimigo.ATACK*/){
+			if(hitObstaculos == true){
+				obstaculo = true;
+				chageState(StateInimigo.PARADO);
+			}
+
 			if(dist <= distanciaAtaque){
 				chageState(StateInimigo.ATACK);
 			}
@@ -256,7 +241,6 @@ public class EnemyPatrol : MonoBehaviour {
 		anim.SetBool("hit", getHit);
 		yield return new WaitForSeconds(0.1f);
 		anim.SetBool("hit", false);
-		//chageState(StateInimigo.PARADO);
 	}
 
 
@@ -359,7 +343,7 @@ public class EnemyPatrol : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		sRender.color = characterColor[0];
 		getHit = false;
-		//barrasVida.SetActive(false);
+		barrasVida.SetActive(false);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

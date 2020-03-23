@@ -9,7 +9,8 @@ public enum EstadoDoInimigo{
 	PATRULHA,
 	ATACK,
 	RECUAR,
-	SEGUIR
+	SEGUIR,
+	DANO
 }
 
 public class Enemy : MonoBehaviour {
@@ -85,7 +86,7 @@ public class Enemy : MonoBehaviour {
 		rBody = GetComponent<Rigidbody2D>();
 
 		sRender.color = characterColor[0];  //INICIA O INIMIGO NA COR 0 // COR NORMAL
-		//barrasVida.SetActive(false);	//DESABILITA A BARRA DE VIDA AO INICIAR O JOGO
+		barrasVida.SetActive(false);	//DESABILITA A BARRA DE VIDA AO INICIAR O JOGO
 		vidaAtual = vidaInimigo;
 		hpBar.localScale = new Vector3(1,1,1); // INICIA O TAMANHO DA BARRA DE VIDA
 
@@ -94,6 +95,8 @@ public class Enemy : MonoBehaviour {
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
+
+		
 
 		//INICIO IMPLEMENTAÇÃO KNOCKBACK DO INIMIGO/////////////////////////////////
 		float xPlayer = playerScript.transform.position.x; //PEGAR A POSIÇÃO DO X DO PERSONAGEM
@@ -126,6 +129,8 @@ public class Enemy : MonoBehaviour {
 
 		rBody.velocity = new Vector2(velocidade, rBody.velocity.y);
 
+		if(currentEstadoDoInimigo != EstadoDoInimigo.DANO){
+		
 		if(velocidade == 0){
 			anim.SetBool("isWalk", false);
 		}
@@ -143,7 +148,7 @@ public class Enemy : MonoBehaviour {
 		
 
 
-		if(currentEstadoDoInimigo == EstadoDoInimigo.PATRULHA){
+		if(currentEstadoDoInimigo == EstadoDoInimigo.PATRULHA && playerScript.death == false){
 			Debug.DrawRay(transform.position, dir * distanciaMudarRota, Color.yellow);
 			hit = Physics2D.Raycast(transform.position, dir, distanciaMudarRota, layerObstaculos);
 
@@ -153,7 +158,7 @@ public class Enemy : MonoBehaviour {
 		}
 
 		
-		if(currentEstadoDoInimigo == EstadoDoInimigo.ALERTA){
+		if(currentEstadoDoInimigo == EstadoDoInimigo.ALERTA && playerScript.death == false){
 		
 			float dist = Vector3.Distance(transform.position, playerScript.transform.position);
 
@@ -167,7 +172,11 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 
+		if(getHit == true){
+			chageState(EstadoDoInimigo.DANO);
+		}
 
+		}
 	}
 
 
@@ -196,9 +205,17 @@ public class Enemy : MonoBehaviour {
 		anim.SetTrigger("atack");
 		
 
-		yield return new WaitForSeconds(tempoRecuo);
+		yield return new WaitForSeconds(1.5f);
 		chageState(EstadoDoInimigo.ALERTA);
 
+	}
+
+
+	IEnumerator tomouDano(){
+		anim.SetBool("hit", getHit);
+		yield return new WaitForSeconds(0.1f);
+		anim.SetBool("hit", false);
+		//chageState(StateInimigo.PARADO);
 	}
 
 
@@ -239,19 +256,13 @@ public class Enemy : MonoBehaviour {
 				StartCoroutine("recuar");
 				break;
 
+			case EstadoDoInimigo.DANO:
+				print("Dano No Inimigo");
+				StartCoroutine("tomouDano");
+			break;
+
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -308,7 +319,7 @@ public class Enemy : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		sRender.color = characterColor[0];
 		getHit = false;
-		//barrasVida.SetActive(false);
+		barrasVida.SetActive(false);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
