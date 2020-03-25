@@ -9,6 +9,7 @@ TagManager:
   - door
   - inimigo
   - damage
+  - portal
   layers:
   - Default
   - TransparentFX

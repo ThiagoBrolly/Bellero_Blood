@@ -7,6 +7,8 @@ public class mudarCena : MonoBehaviour {
 
 	private fade fade;
 	public string cenaDestino;
+	public Transform trasnPlayer;
+	public Transform destino;
 
 
 
@@ -17,11 +19,6 @@ public class mudarCena : MonoBehaviour {
 		fade = FindObjectOfType(typeof(fade)) as fade;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
 
 	public void interacao(){
@@ -32,6 +29,11 @@ public class mudarCena : MonoBehaviour {
 	IEnumerator mudancaCena(){
 		fade.fadeIn();
 		yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
+		trasnPlayer.gameObject.SetActive(false);
+		//yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(cenaDestino);
+		trasnPlayer.position = destino.position;
+		trasnPlayer.gameObject.SetActive(true);
+		yield return new WaitForSeconds(1);
 	}
 }

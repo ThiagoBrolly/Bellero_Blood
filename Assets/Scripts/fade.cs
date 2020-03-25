@@ -44,7 +44,7 @@ public class fade : MonoBehaviour {
 	}
 
 	IEnumerator fadeO(){
-		yield return new WaitForSeconds(0.5f); //TEMPO TRANSIÇÃO
+		//yield return new WaitForSeconds(1); //TEMPO TRANSIÇÃO
 		for(float i = 0; i <= 1; i+= step){
 			fume.color = Color.Lerp(corTransicao[1], corTransicao[0], i);
 			yield return new WaitForEndOfFrame();

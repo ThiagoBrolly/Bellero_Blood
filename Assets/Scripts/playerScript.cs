@@ -340,6 +340,14 @@ public class playerScript : MonoBehaviour {
 				_GameController.vidaAtualmente -= 1;
 				print("Dano");
 			break;
+
+			case "portal":
+				if(objetoInteracao.tag == "portal"){
+					objetoInteracao.GetComponent<portal>().tPlayer = this.transform;
+				}
+				objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
+				print("portal");
+			break;
 		}
 	}	
 
