@@ -56,6 +56,7 @@ public class playerScript : MonoBehaviour {
 	void Start () {
 
 		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
+		_GameController.playerTransform = this.transform;
 
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
 		//vidaMax = _GameController.vidaMaxima;
@@ -341,13 +342,13 @@ public class playerScript : MonoBehaviour {
 				print("Dano");
 			break;
 
-			case "portal":
+			/*case "portal":
 				if(objetoInteracao.tag == "portal"){
 					objetoInteracao.GetComponent<portal>().tPlayer = this.transform;
 				}
 				objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
 				print("portal");
-			break;
+			break;*/
 		}
 	}	
 

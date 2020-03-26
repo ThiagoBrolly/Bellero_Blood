@@ -1,0 +1,54 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class teleporte : MonoBehaviour {
+	private fade fade;
+
+	private _GameController _GameController;
+
+	public Transform pontoSaida;
+	public Transform posCamera;
+
+	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;
+
+
+	// Use this for initialization
+	void Start () {
+
+		fade = FindObjectOfType(typeof(fade)) as fade;
+
+		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
+		
+	}
+	
+	// Update is called once per frame
+	void OnTriggerEnter2D(Collider2D col) {
+
+		if(col.gameObject.tag == "Player"){
+			col.transform.position = pontoSaida.position;
+			/*Camera.main.transform.position = posCamera.position;
+
+			_GameController.LimiteCamEsc = LimiteCamEsc;
+			_GameController.LimiteCamDir = LimiteCamDir;
+			_GameController.LimiteCamSup = LimiteCamSup;
+			_GameController.LimiteCamBaixo = LimiteCamBaixo;*/
+
+			StartCoroutine("acionarPorta");
+		}
+		
+	} 
+
+
+	IEnumerator acionarPorta(){
+		fade.fadeIn();
+		yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
+		Camera.main.transform.position = posCamera.position;
+		_GameController.LimiteCamEsc = LimiteCamEsc;
+		_GameController.LimiteCamDir = LimiteCamDir;
+		_GameController.LimiteCamSup = LimiteCamSup;
+		_GameController.LimiteCamBaixo = LimiteCamBaixo;
+		yield return new WaitForSeconds(1);
+		fade.fadeOut();
+	}
+}
