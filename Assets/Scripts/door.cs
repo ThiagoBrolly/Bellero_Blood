@@ -12,6 +12,7 @@ public class door : MonoBehaviour {
 
 
 
+
 	void Start(){
 		fade = FindObjectOfType(typeof(fade)) as fade;
 	}
@@ -26,9 +27,12 @@ public class door : MonoBehaviour {
 
 	IEnumerator acionarPorta(){
 		fade.fadeIn();
+		
 		yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
 		tPlayer.gameObject.SetActive(false);
 		tPlayer.position = destino.position;
+		//Camera.main.transform.position = new Vector3(tPlayer.position.x, tPlayer.position.y, -10);
+		yield return new WaitForSeconds(2);
 		tPlayer.gameObject.SetActive(true);
 		fade.fadeOut();
 	}

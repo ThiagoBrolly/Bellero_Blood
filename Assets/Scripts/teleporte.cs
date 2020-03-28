@@ -43,12 +43,13 @@ public class teleporte : MonoBehaviour {
 	IEnumerator acionarPorta(){
 		fade.fadeIn();
 		yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
+		yield return new WaitForSeconds(1);
 		Camera.main.transform.position = posCamera.position;
 		_GameController.LimiteCamEsc = LimiteCamEsc;
 		_GameController.LimiteCamDir = LimiteCamDir;
 		_GameController.LimiteCamSup = LimiteCamSup;
 		_GameController.LimiteCamBaixo = LimiteCamBaixo;
-		yield return new WaitForSeconds(1);
+		
 		fade.fadeOut();
 	}
 }

@@ -239,7 +239,7 @@ public class EnemyPatrol : MonoBehaviour {
 
 	IEnumerator tomouDano(){
 		anim.SetBool("hit", getHit);
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.2f);
 		anim.SetBool("hit", false);
 	}
 
@@ -270,8 +270,8 @@ public class EnemyPatrol : MonoBehaviour {
 			break;
 
 			case StateInimigo.DANO:
-				print("Dano No Inimigo");
 				StartCoroutine("tomouDano");
+				chageState(StateInimigo.ATACK);
 			break;
 
 		}
