@@ -342,6 +342,10 @@ public class playerScript : MonoBehaviour {
 				print("Dano");
 			break;
 
+			case "armadilha":
+				_GameController.vidaAtualmente = 0;
+			break;
+
 			/*case "portal":
 				if(objetoInteracao.tag == "portal"){
 					objetoInteracao.GetComponent<portal>().tPlayer = this.transform;

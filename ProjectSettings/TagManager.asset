@@ -10,6 +10,7 @@ TagManager:
   - inimigo
   - damage
   - portal
+  - armadilha
   layers:
   - Default
   - TransparentFX

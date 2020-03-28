@@ -11,6 +11,7 @@ public class teleporte : MonoBehaviour {
 	public Transform posCamera;
 
 	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;
+	
 
 
 	// Use this for initialization
@@ -26,15 +27,8 @@ public class teleporte : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 
 		if(col.gameObject.tag == "Player"){
-			col.transform.position = pontoSaida.position;
-			/*Camera.main.transform.position = posCamera.position;
-
-			_GameController.LimiteCamEsc = LimiteCamEsc;
-			_GameController.LimiteCamDir = LimiteCamDir;
-			_GameController.LimiteCamSup = LimiteCamSup;
-			_GameController.LimiteCamBaixo = LimiteCamBaixo;*/
-
 			StartCoroutine("acionarPorta");
+			col.transform.position = pontoSaida.position;			
 		}
 		
 	} 
@@ -44,11 +38,13 @@ public class teleporte : MonoBehaviour {
 		fade.fadeIn();
 		yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
 		yield return new WaitForSeconds(1);
-		Camera.main.transform.position = posCamera.position;
+		//Camera.main.transform.position = posCamera.position;
+		
 		_GameController.LimiteCamEsc = LimiteCamEsc;
 		_GameController.LimiteCamDir = LimiteCamDir;
 		_GameController.LimiteCamSup = LimiteCamSup;
 		_GameController.LimiteCamBaixo = LimiteCamBaixo;
+		Camera.main.transform.position = new Vector3(posCamera.position.x, posCamera.position.y, -10);
 		
 		fade.fadeOut();
 	}
