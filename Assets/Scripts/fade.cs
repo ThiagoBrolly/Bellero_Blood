@@ -20,8 +20,6 @@ public class fade : MonoBehaviour {
 	}
 
 
-
-
 	public void fadeIn(){
 		if(emTransicao == false){
 			painelFume.SetActive(true);

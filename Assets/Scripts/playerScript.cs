@@ -56,7 +56,7 @@ public class playerScript : MonoBehaviour {
 	void Start () {
 
 		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
-		_GameController.playerTransform = this.transform;
+		//_GameController.playerTransform = this.transform;
 
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
 		//vidaMax = _GameController.vidaMaxima;

@@ -5,11 +5,12 @@ using TMPro;
 
 public class _GameController : MonoBehaviour {
 
-	private Camera cam;
-	public Transform playerTransform;
 
+	/*private Camera cam;
+	public Transform playerTransform;
+	
 	public float speedCam;
-	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;
+	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;*/
 
 	public string[] tiposDano;
 	public GameObject[] fxDano;
@@ -42,10 +43,11 @@ public class _GameController : MonoBehaviour {
 
 ///////////////////////////////////////////////////////////////////////////////////
 	void Start () {
-		cam = Camera.main;
+		//cam = Camera.main;
 
 		DontDestroyOnLoad(this.gameObject);
 		vidaAtualmente = vidaMaxima;
+
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +57,7 @@ public class _GameController : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-
+/*
 		float posCamX = playerTransform.position.x;
 		float posCamY = playerTransform.position.y;
 
@@ -70,9 +72,8 @@ public class _GameController : MonoBehaviour {
 			posCamY = LimiteCamSup.position.y;
 		}
 
-
 		Vector3 posCam = new Vector3(posCamX, posCamY, cam.transform.position.z);
 
-		cam.transform.position = Vector3.Lerp(cam.transform.position, posCam,speedCam * Time.deltaTime);
+		cam.transform.position = Vector3.Lerp(cam.transform.position, posCam,speedCam * Time.deltaTime);*/
 	}
 }
