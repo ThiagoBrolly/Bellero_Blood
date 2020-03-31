@@ -35,7 +35,7 @@ public class playerScript : MonoBehaviour {
 	public Transform hand;
 	private Vector3 dir = Vector3.right;
 	public LayerMask interacao;
-	public GameObject objetoInteracao;
+	private GameObject objetoInteracao;
 
 	//SISTEMA DE ARMAS
 	public int idArma;
@@ -48,6 +48,7 @@ public class playerScript : MonoBehaviour {
 	public Color noHitColor;
 
 	public Transform mao;
+	//public Transform maoNoPulo;
 	public GameObject hitBoxPrefab;
 
 
@@ -61,7 +62,7 @@ public class playerScript : MonoBehaviour {
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
 		//vidaMax = _GameController.vidaMaxima;
 		//vidaAtual = _GameController.vidaAtualmente;
-		idArma = _GameController.idArma;
+		//idArma = _GameController.idArma;
 		
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
@@ -174,18 +175,41 @@ public class playerScript : MonoBehaviour {
 		playerAnimator.SetFloat("speedY", playerRb.velocity.y);
 		playerAnimator.SetBool("Death", death);
 		playerAnimator.SetBool("KnockB", knockbackConfirm);
-		playerAnimator.SetBool("isAtack", isAtack);
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-	void OnEndAtack(){
-		isAtack = false;
-	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	void HitBoxAtack(){
-		GameObject hitBoxTemp = Instantiate(hitBoxPrefab, mao.position, transform.localRotation);
-		Destroy(hitBoxTemp, 0.2f);
+		//if(Grounded == true){
+			GameObject hitBoxTemp = Instantiate(hitBoxPrefab, mao.position, transform.localRotation);
+			Destroy(hitBoxTemp, 0.2f);
+		/*} else if(Grounded == false){
+			GameObject hitBoxTemp = Instantiate(hitBoxPrefab, maoNoPulo.position, transform.localRotation);
+			Destroy(hitBoxTemp, 0.2f);
+		}*/
 	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	void OnEndAtack(){
+		isAtack = false;
+		armas[3].SetActive(false);
+	}
+
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*void atack(int atk){
+		switch(atk){
+			case 0:
+				isAtack = false;
+				//armas[3].SetActive(false);
+				break;
+			case 1:
+				isAtack = true;
+				break;
+		}
+	}*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -193,6 +217,14 @@ public class playerScript : MonoBehaviour {
 		if(idArma != idArmaAtual){
 			trocarArma(idArma);
 		}
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	void controleArma(int id){
+		foreach (GameObject o in armas){
+			o.SetActive(false);
+		}
+		armas[id].SetActive(true);
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -204,6 +236,9 @@ public class playerScript : MonoBehaviour {
 		transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 		dir.x = x;
 	}
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void DoubleJumpEndPressionBotton(){
 		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
@@ -236,26 +271,7 @@ public class playerScript : MonoBehaviour {
 		}
 	}
 
-	/*if(Input.GetButtonDown("Jump") && isGrounded == true){
-			playerRb.AddForce(new Vector2(0, jumpForce)); // Pulo
-		}*/
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*void atack(int atk){
-		switch(atk){
-			case 0:
-				attacking = false;
-				armas[3].SetActive(false);
-				break;
-			case 1:
-				attacking = true;
-				break;
-		}
-	}
-
-	/*void OnEndAtack(){
-		attacking = false;
-	}*/
 
 /////////////////////////////////////////////////////////////////////////////////
 
@@ -322,13 +338,7 @@ public class playerScript : MonoBehaviour {
 		
 	}
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	void controleArma(int id){
-		foreach (GameObject o in armas){
-			o.SetActive(false);
-		}
-		armas[id].SetActive(true);
-	}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -362,7 +372,7 @@ public class playerScript : MonoBehaviour {
 
 	public void trocarArma(int id){
 		idArma = id;
-		armas[0].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma1[idArma];
+		/*armas[0].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma1[idArma];
 		armaInfo tempInfoArma = armas[0].GetComponent<armaInfo>();
 		tempInfoArma.danoMin = _GameController.danoMinArma[idArma];
 		tempInfoArma.danoMax = _GameController.danoMaxArma[idArma];
@@ -384,7 +394,13 @@ public class playerScript : MonoBehaviour {
 		tempInfoArma = armas[3].GetComponent<armaInfo>();
 		tempInfoArma.danoMin = _GameController.danoMinArma[idArma];
 		tempInfoArma.danoMax = _GameController.danoMaxArma[idArma];
-		tempInfoArma.tipoDano = _GameController.tipoDanoArma[idArma];
+		tempInfoArma.tipoDano = _GameController.tipoDanoArma[idArma];*/
+
+
+		armas[0].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma1[idArma];
+		armas[1].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma2[idArma];
+		armas[2].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma3[idArma];
+		armas[3].GetComponent<SpriteRenderer>().sprite = _GameController.spriteArma4[idArma];
 
 		idArmaAtual = idArma;
 	}

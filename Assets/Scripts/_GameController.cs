@@ -36,9 +36,12 @@ public class _GameController : MonoBehaviour {
 	public Sprite[] spriteArma2;
 	public Sprite[] spriteArma3;
 	public Sprite[] spriteArma4;
+	
+
 	public int[] danoMinArma;
 	public int[] danoMaxArma;
 	public int[] tipoDanoArma;
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -56,9 +59,9 @@ public class _GameController : MonoBehaviour {
 		goldTxt.text = s.Replace(",", ".");
 	}
 
-	void LateUpdate() {
+	/*void LateUpdate() {
 
-		/*float posCamX = playerTransform.position.x;
+		float posCamX = playerTransform.position.x;
 		float posCamY = playerTransform.position.y;
 
 		if(cam.transform.position.x < LimiteCamEsc.position.x && playerTransform.position.x < LimiteCamEsc.position.x){
@@ -74,6 +77,6 @@ public class _GameController : MonoBehaviour {
 
 		Vector3 posCam = new Vector3(posCamX, posCamY, cam.transform.position.z);
 
-		cam.transform.position = Vector3.Lerp(cam.transform.position, posCam,7 * Time.deltaTime);*/
-	}
+		cam.transform.position = Vector3.Lerp(cam.transform.position, posCam,7 * Time.deltaTime);
+	}*/
 }
