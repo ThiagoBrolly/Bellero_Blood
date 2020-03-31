@@ -5,7 +5,7 @@ using UnityEngine;
 public class teleporte : MonoBehaviour {
 	private fade fade;
 
-	//private _GameController _GameController;
+	private _GameController _GameController;
 
 	public Transform tPlayer;
 
@@ -21,7 +21,7 @@ public class teleporte : MonoBehaviour {
 
 		fade = FindObjectOfType(typeof(fade)) as fade;
 
-		//_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
+		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
 		
 	}
 	
@@ -39,14 +39,14 @@ public class teleporte : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		//Camera.main.transform.position = posCamera.position;
 
-		//tPlayer.gameObject.SetActive(false);
+		
 		tPlayer.position = pontoSaida.position;
-		/*tPlayer.gameObject.SetActive(true);*/
 		
 		/*_GameController.LimiteCamEsc = LimiteCamEsc;
 		_GameController.LimiteCamDir = LimiteCamDir;
 		_GameController.LimiteCamSup = LimiteCamSup;
 		_GameController.LimiteCamBaixo = LimiteCamBaixo;*/
+
 		//Camera.main.transform.position = new Vector3(posCamera.position.x, posCamera.position.y, -10);
 		
 		fade.fadeOut();

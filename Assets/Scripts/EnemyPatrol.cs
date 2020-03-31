@@ -33,11 +33,11 @@ public class EnemyPatrol : MonoBehaviour {
 	public float[] ajusteDano;
 	public bool olhandoEsquerda, playerEsquerda;
 
-	[Header("Configuração de KnockBack")]
+	/*[Header("Configuração de KnockBack")]
 	public GameObject knockForcePrefab;	// força de repulsão
 	public Transform knockPosition;	// ponto dde origem da força
 	public float knockX; // valor padrão do position X
-	private float kx;
+	private float kx;*/
 
 	public bool getHit; 	//INDICA SE TOMOU DANO
 
@@ -111,7 +111,7 @@ public class EnemyPatrol : MonoBehaviour {
 		}
 
 		//INVERTE A POSIÇÃO DO K QUANDO O INIMIGO MUDA DE LADO E FLIP QUANDO O PERSONAGEM MUDA DE LADO
-		if(olhandoEsquerda == true && playerEsquerda == true){
+		/*if(olhandoEsquerda == true && playerEsquerda == true){
 			kx = knockX;
 		} else if (olhandoEsquerda == false && playerEsquerda == true){
 			kx = knockX * -1;
@@ -123,7 +123,7 @@ public class EnemyPatrol : MonoBehaviour {
 			kx = knockX;
 		}
 		
-		knockPosition.localPosition = new Vector3(kx, knockPosition.localPosition.y, 0); //INICIAR O K NA POSIÇÃO DETERMINADA PELO KNOCKX
+		knockPosition.localPosition = new Vector3(kx, knockPosition.localPosition.y, 0); */ //INICIAR O K NA POSIÇÃO DETERMINADA PELO KNOCKX
 		//FIM IMPLEMENTAÇÃO KNOCKBACK DO INIMIGO/////////////////////////////
 
 
@@ -239,7 +239,7 @@ public class EnemyPatrol : MonoBehaviour {
 
 	IEnumerator tomouDano(){
 		anim.SetBool("hit", getHit);
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.05f);
 		anim.SetBool("hit", false);
 	}
 
@@ -393,8 +393,8 @@ public class EnemyPatrol : MonoBehaviour {
 					GameObject fxTemp = Instantiate(_GameController.fxDano[tipoDano], transform.position, transform.localRotation);
 					Destroy(fxTemp, 1);
 
-					GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation);
-					Destroy(knockTemp, 0.02f);
+					//GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation);
+					//Destroy(knockTemp, 0.02f);
 
 					StartCoroutine("invuneravel");
 				}

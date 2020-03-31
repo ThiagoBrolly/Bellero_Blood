@@ -127,10 +127,12 @@ public class playerScript : MonoBehaviour {
 				objetoInteracao.SendMessage("interacao", SendMessageOptions.DontRequireReceiver);
 				//ATACAR NO PULO
 			}	else if(Input.GetButtonDown("Fire1") && isAtack == false && Grounded == false){ 
-				playerAnimator.SetTrigger("atackJump");
+					//isAtack = true;
+					playerAnimator.SetTrigger("atack");
 				//ATACAR ABAIXADO
-			}	else if(Input.GetButtonDown("Fire1") && v < 0 && isAtack == false && Grounded == true){ 
-				playerAnimator.SetTrigger("atackCrouch");
+			}	else if(Input.GetButtonDown("Fire1") && v < 0 && isAtack == false && Grounded == true){
+					isAtack = true;
+					playerAnimator.SetTrigger("atackCrouch");
 			}		
 			//PARA DE ANDAR ENQUANTO ATACA
 			if(isAtack == true && Grounded == true){

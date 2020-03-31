@@ -30,7 +30,7 @@ public class door : MonoBehaviour {
 		yield return new WaitWhile(() => fade.fume.color.a < 0.9f);
 		tPlayer.gameObject.SetActive(false);
 		tPlayer.position = destino.position;
-		//Camera.main.transform.position = new Vector3(destino.position.x, transform.position.y, -10);
+		Camera.main.transform.position = new Vector3(destino.position.x, transform.position.y, -10);
 		tPlayer.gameObject.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
 		fade.fadeOut();

@@ -9,7 +9,7 @@ public class _GameController : MonoBehaviour {
 	/*private Camera cam;
 	public Transform playerTransform;
 	
-	public float speedCam;
+	//public float speedCam;
 	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;*/
 
 	public string[] tiposDano;
@@ -57,8 +57,8 @@ public class _GameController : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-/*
-		float posCamX = playerTransform.position.x;
+
+		/*float posCamX = playerTransform.position.x;
 		float posCamY = playerTransform.position.y;
 
 		if(cam.transform.position.x < LimiteCamEsc.position.x && playerTransform.position.x < LimiteCamEsc.position.x){
@@ -74,6 +74,6 @@ public class _GameController : MonoBehaviour {
 
 		Vector3 posCam = new Vector3(posCamX, posCamY, cam.transform.position.z);
 
-		cam.transform.position = Vector3.Lerp(cam.transform.position, posCam,speedCam * Time.deltaTime);*/
+		cam.transform.position = Vector3.Lerp(cam.transform.position, posCam,7 * Time.deltaTime);*/
 	}
 }

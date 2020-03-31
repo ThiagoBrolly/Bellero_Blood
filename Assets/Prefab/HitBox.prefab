@@ -69,4 +69,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   danoMin: 1
   danoMax: 5
-  tipoDano: 1
+  tipoDano: 0

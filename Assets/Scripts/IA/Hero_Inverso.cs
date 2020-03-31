@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/*public enum enemyState{
+public enum enemyState{
 		PARADO,
 		ALERTA,
 		PATRULHA,
 		ATACK,
 		RECUAR
-	}*/
+	}
 
 public class Hero_Inverso : MonoBehaviour {
 
