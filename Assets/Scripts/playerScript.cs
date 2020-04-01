@@ -119,8 +119,8 @@ public class playerScript : MonoBehaviour {
 			if(Input.GetButtonDown("Fire1") && v >= 0 && isAtack == false && Grounded == true && objetoInteracao == null){
 				isAtack = true;
 				playerAnimator.SetTrigger("atack");
-				
 			}
+			
 			//ABRIR PORTA
 			if(Input.GetButtonDown("Fire1") && v >= 0 && isAtack == false && Grounded == true && objetoInteracao != null){
 				if(objetoInteracao.tag == "door"){
@@ -135,7 +135,7 @@ public class playerScript : MonoBehaviour {
 			}	else if(Input.GetButtonDown("Fire1") && v < 0 && isAtack == false && Grounded == true){
 					isAtack = true;
 					playerAnimator.SetTrigger("atackCrouch");
-			}		
+			}	
 			//PARA DE ANDAR ENQUANTO ATACA
 			if(isAtack == true && Grounded == true){
 				h = 0;
@@ -176,10 +176,13 @@ public class playerScript : MonoBehaviour {
 		playerAnimator.SetFloat("speedY", playerRb.velocity.y);
 		playerAnimator.SetBool("Death", death);
 		playerAnimator.SetBool("KnockB", knockbackConfirm);
+
+
+		
 	}
 
 
-	//////////////////////////////////////////////////////////////////////////////////////////////
+	//FIM UPDATE////////////////////////////////////////////////////////////////////////////////////////
 
 
 	void HitBoxAtack(){
@@ -405,5 +408,6 @@ public class playerScript : MonoBehaviour {
 
 		idArmaAtual = idArma;
 	}
+
 
 }

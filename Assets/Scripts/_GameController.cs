@@ -11,6 +11,7 @@ public class _GameController : MonoBehaviour {
 	
 	//public float speedCam;
 	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;*/
+	private playerScript playerScript;
 
 	public string[] tiposDano;
 	public GameObject[] fxDano;
@@ -43,16 +44,22 @@ public class _GameController : MonoBehaviour {
 	public int[] danoMaxArma;
 	public int[] tipoDanoArma;
 
+	[Header("Paineis")]
+	public GameObject painelPause;
+
+	
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////
 	void Start () {
 		//cam = Camera.main;
+		playerScript = FindObjectOfType(typeof(playerScript)) as playerScript;
 
 		DontDestroyOnLoad(this.gameObject);
 		vidaAtualmente = vidaMaxima;
 
-		
+		painelPause.SetActive(false);
 
 	}
 	
@@ -60,7 +67,52 @@ public class _GameController : MonoBehaviour {
 	void Update () {
 		string s = gold.ToString("N0");
 		goldTxt.text = s.Replace(",", ".");
+
+		trocaArmaInGame();
+
+		if(Input.GetButtonDown("Cancel")){
+			pauseGame();
+		}
+		
 	}
+
+	void pauseGame(){
+
+		bool pauseState = painelPause.activeSelf;
+		pauseState = !pauseState;
+
+		painelPause.SetActive(pauseState);
+
+		switch(pauseState){
+			case true:
+				Time.timeScale = 0;
+			break;
+
+			case false:
+				Time.timeScale = 1;
+			break;
+		}
+
+	}
+
+
+	//TESTA DE TROCA DE ARMA DURANTE O JOGO
+	void trocaArmaInGame(){
+		if(Input.GetKeyDown(KeyCode.Alpha1) && playerScript.isAtack == false){
+			idArmaG = 0;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha2) && playerScript.isAtack == false){
+			idArmaG = 1;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha3) && playerScript.isAtack == false){
+			idArmaG = 2;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha4) && playerScript.isAtack == false){
+			idArmaG = 3;
+		}
+	}
+
+	
 
 
 
