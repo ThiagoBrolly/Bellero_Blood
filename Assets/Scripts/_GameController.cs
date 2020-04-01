@@ -24,7 +24,8 @@ public class _GameController : MonoBehaviour {
 	public int idPersonagemAtual;
 	public int vidaMaxima;
 	public int vidaAtualmente;
-	public int idArma;
+	public int idArmaG;
+	//public int idArmaAtualG;
 
 	[Header("Banco de Personagens")]
 	public string[] nomePersonagem;
@@ -51,6 +52,8 @@ public class _GameController : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 		vidaAtualmente = vidaMaxima;
 
+		
+
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////
@@ -58,6 +61,8 @@ public class _GameController : MonoBehaviour {
 		string s = gold.ToString("N0");
 		goldTxt.text = s.Replace(",", ".");
 	}
+
+
 
 	/*void LateUpdate() {
 

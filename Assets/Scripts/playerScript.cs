@@ -62,7 +62,7 @@ public class playerScript : MonoBehaviour {
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
 		//vidaMax = _GameController.vidaMaxima;
 		//vidaAtual = _GameController.vidaAtualmente;
-		//idArma = _GameController.idArma;
+		//idArma = _GameController.idArmaG;
 		
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
@@ -89,6 +89,7 @@ public class playerScript : MonoBehaviour {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
+		idArma = _GameController.idArmaG;
 		vida = _GameController.vidaAtualmente;
 
 		h = Input.GetAxisRaw("Horizontal");
