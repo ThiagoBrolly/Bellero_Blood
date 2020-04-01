@@ -19,10 +19,6 @@ public class reSkin : MonoBehaviour {
 
 
 
-
-
-
-
 	// Use this for initialization
 	void Start () {
 
@@ -34,11 +30,6 @@ public class reSkin : MonoBehaviour {
 		sRender = GetComponent<SpriteRenderer>();
 		LoadSpriteSheet();		
 	}
-
-
-
-
-
 
 
 

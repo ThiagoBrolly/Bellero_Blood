@@ -81,14 +81,20 @@ public class playerScript : MonoBehaviour {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 	void FixedUpdate() {
+
+		if(_GameController.currentState != GameState.GAMEPLAY){return;}
 		if(!death && !knockbackConfirm){
 			playerRb.velocity = new Vector2(h * speed, playerRb.velocity.y);
+			Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
+			interagir();
 		}
-		interagir();
+		
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 	void Update () {
+		if(_GameController.currentState != GameState.GAMEPLAY){return;}
+
 		idArma = _GameController.idArmaG;
 		vida = _GameController.vidaAtualmente;
 
@@ -245,7 +251,7 @@ public class playerScript : MonoBehaviour {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void DoubleJumpEndPressionBotton(){
-		Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, whatIsGround);
+		
 
 		if (Grounded)
 			doubleJump = false;

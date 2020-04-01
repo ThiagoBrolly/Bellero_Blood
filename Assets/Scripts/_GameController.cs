@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
+public enum GameState{
+	PAUSE,
+	GAMEPLAY,
+	ITENS
+}
 
 public class _GameController : MonoBehaviour {
 
@@ -11,6 +18,10 @@ public class _GameController : MonoBehaviour {
 	
 	//public float speedCam;
 	public Transform LimiteCamEsc, LimiteCamDir, LimiteCamSup, LimiteCamBaixo;*/
+
+	public GameState currentState;
+
+	private inventario inventario;
 	private playerScript playerScript;
 
 	public string[] tiposDano;
@@ -33,6 +44,11 @@ public class _GameController : MonoBehaviour {
 	public Texture[] spriteSheetName;
 
 	[Header("Banco de Dados Armas")]
+	public string[] NomeArma;
+	public Sprite[] imgInventario;
+	public int[] custoArma;
+	public int[] idClasseArma;
+
 
 	public Sprite[] spriteArma1;
 	public Sprite[] spriteArma2;
@@ -44,8 +60,17 @@ public class _GameController : MonoBehaviour {
 	public int[] danoMaxArma;
 	public int[] tipoDanoArma;
 
+
+
 	[Header("Paineis")]
 	public GameObject painelPause;
+	public GameObject painelItens;
+
+
+
+	[Header("Primeiro Elemento de Cada Painel")]
+	public Button fistPainelPause;
+	public Button fistPainelItens;
 
 	
 
@@ -55,11 +80,13 @@ public class _GameController : MonoBehaviour {
 	void Start () {
 		//cam = Camera.main;
 		playerScript = FindObjectOfType(typeof(playerScript)) as playerScript;
+		inventario = FindObjectOfType(typeof(inventario)) as inventario;
 
 		DontDestroyOnLoad(this.gameObject);
 		vidaAtualmente = vidaMaxima;
 
 		painelPause.SetActive(false);
+		painelItens.SetActive(false);
 
 	}
 	
@@ -70,13 +97,14 @@ public class _GameController : MonoBehaviour {
 
 		trocaArmaInGame();
 
-		if(Input.GetButtonDown("Cancel")){
+		if(Input.GetButtonDown("Cancel") && currentState != GameState.ITENS){
 			pauseGame();
 		}
-		
 	}
 
-	void pauseGame(){
+	
+
+	public void pauseGame(){
 
 		bool pauseState = painelPause.activeSelf;
 		pauseState = !pauseState;
@@ -86,14 +114,54 @@ public class _GameController : MonoBehaviour {
 		switch(pauseState){
 			case true:
 				Time.timeScale = 0;
+				changeState(GameState.PAUSE);
+				fistPainelPause.Select();
 			break;
 
 			case false:
 				Time.timeScale = 1;
+				changeState(GameState.GAMEPLAY);
 			break;
 		}
 
 	}
+
+	public void changeState(GameState newState){
+		currentState = newState;
+	}
+
+	public void bnItensDown(){
+		painelPause.SetActive(false);
+		painelItens.SetActive(true);
+		fistPainelItens.Select();
+		inventario.carregarInventario();
+
+		changeState(GameState.ITENS);
+	}
+
+	public void fecharPainel(){
+		painelItens.SetActive(false);
+		painelPause.SetActive(true);
+		fistPainelPause.Select();
+
+		inventario.limparItensCarregados();
+
+		changeState(GameState.PAUSE);
+	}
+
+	public void usarItemArma(int idArma){
+		playerScript.trocarArma(idArma);
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 	//TESTA DE TROCA DE ARMA DURANTE O JOGO
