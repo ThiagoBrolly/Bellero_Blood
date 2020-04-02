@@ -283,7 +283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &17180368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7034,7 +7034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &796346267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8873,6 +8873,9 @@ MonoBehaviour:
   spriteSheetName:
   - {fileID: 2800000, guid: 3a70927367c47d34aa50740cdeeb0626, type: 3}
   - {fileID: 2800000, guid: d194dbd9cc307c6478a4cb34b4e92229, type: 3}
+  ArmaInicial: {fileID: 1713575204987402, guid: 5598b019caa282f4eb254a4265992b9c,
+    type: 2}
+  idArmaInicial: 0
   NomeArma:
   - "Espada de A\xE7o"
   - Espada de Gelo
@@ -8967,11 +8970,7 @@ MonoBehaviour:
   qtdMana: {fileID: 2096012443}
   qCura: 0
   qMana: 0
-  itemInventario:
-  - {fileID: 1713575204987402, guid: 5598b019caa282f4eb254a4265992b9c, type: 2}
-  - {fileID: 1713575204987402, guid: 7647cb70f9a6a5748b0667201f09c1ff, type: 2}
-  - {fileID: 1713575204987402, guid: 5e321f3e88defc241a4d08c21deef628, type: 2}
-  - {fileID: 1713575204987402, guid: 81758d7299424b1468371038d5005127, type: 2}
+  itemInventario: []
   itensCarregados: []
 --- !u!114 &1022754837
 MonoBehaviour:
@@ -10936,7 +10935,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259474031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -0.52929103, z: -10}
+  m_LocalPosition: {x: -1.666666, y: -0.52929103, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

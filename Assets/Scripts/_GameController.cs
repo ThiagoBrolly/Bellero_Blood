@@ -42,6 +42,10 @@ public class _GameController : MonoBehaviour {
 	[Header("Banco de Personagens")]
 	public string[] nomePersonagem;
 	public Texture[] spriteSheetName;
+	public GameObject ArmaInicial;
+	public int idArmaInicial;
+
+
 
 	[Header("Banco de Dados Armas")]
 	public string[] NomeArma;
@@ -94,6 +98,11 @@ public class _GameController : MonoBehaviour {
 		painelPause.SetActive(false);
 		painelItens.SetActive(false);
 		painelItemInfo.SetActive(false);
+
+		inventario.itemInventario.Add(ArmaInicial);
+
+		GameObject tempArma = Instantiate(ArmaInicial);
+		idArmaInicial = tempArma.GetComponent<item>().idItem;
 
 	}
 	
@@ -202,6 +211,16 @@ public class _GameController : MonoBehaviour {
 			ap += 1;
 			aprimoramentoArma[idArma] = ap;
 		}
+	}
+
+	public void swap(int idSlot){
+		GameObject t1 = inventario.itemInventario[0];
+		GameObject t2 = inventario.itemInventario[idSlot];
+
+		inventario.itemInventario[0] = t2;
+		inventario.itemInventario[idSlot] = t1;
+
+		voltarGamePlay();
 	}
 
 

@@ -51,6 +51,14 @@ public class pItemInfo : MonoBehaviour {
 
 		danoArma.text = "Dano: " + danoMin.ToString() + "-" + danoMax.ToString() + " / " + tipoDano;
 
+		if(idSlot == 0){
+			btnEquipar.interactable = false;
+			btnExcluir.interactable = false;
+		}
+		else{
+			btnEquipar.interactable = true;
+			btnExcluir.interactable = true;
+		}
 		
 	}
 
@@ -63,7 +71,7 @@ public class pItemInfo : MonoBehaviour {
 
 	public void bEquipar(){
 		objetoSlot.SendMessage("usarItem", SendMessageOptions.DontRequireReceiver);
-		_GameController.voltarGamePlay();
+		_GameController.swap(idSlot);
 	}
 
 	public void bExcluir(){
