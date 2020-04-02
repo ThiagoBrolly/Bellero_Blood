@@ -1,28 +1,36 @@
 fileFormatVersion: 2
-guid: f4d497049c1e69c4bb5b271fb9cf03b5
+guid: 3f417b1a9fd87f743923ed6016e51bd5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hud_0
-    21300002: hud_1
-    21300004: hud_2
-    21300006: hud_3
-    21300008: hud_4
-    21300010: hud_5
-    21300012: hud_6
-    21300014: hud_7
-    21300016: hud_8
-    21300018: hud_9
-    21300020: hud_10
-    21300022: hud_11
-    21300024: hud_12
-    21300026: hud_13
-    21300028: hud_14
-    21300030: hud_15
-    21300032: hud_16
-    21300034: hud_17
-    21300036: hud_18
-    21300038: hud_19
-    21300040: hud_20
+    21300000: HUDMenuPause0
+    21300002: HUDMenuPause15
+    21300004: HUDMenuPause16
+    21300006: HUDMenuPause15,1
+    21300008: HUDMenuPause16,1
+    21300010: HUDMenuPause1
+    21300012: HUDMenuPause17
+    21300014: HUDMenuPause18
+    21300016: HUDMenuPause17,1
+    21300018: HUDMenuPause2
+    21300020: HUDMenuPauseMelhorado_10
+    21300022: HUDMenuPauseMelhorado_11
+    21300024: HUDMenuPause3
+    21300026: HUDMenuPauseMelhorado_13
+    21300028: HUDMenuPauseMelhorado_14
+    21300030: HUDMenuPause4
+    21300032: HUDMenuPauseMelhorado_16
+    21300034: HUDMenuPause5
+    21300036: HUDMenuPauseMelhorado_18
+    21300038: HUDMenuPauseMelhorado_19
+    21300040: HUDMenuPause6
+    21300042: HUDMenuPause7
+    21300044: HUDMenuPause8
+    21300046: HUDMenuPause9
+    21300048: HUDMenuPause10
+    21300050: HUDMenuPause11
+    21300052: HUDMenuPause12
+    21300054: HUDMenuPause13
+    21300056: HUDMenuPause14
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -80,7 +88,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -90,27 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,264 +108,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hud_0
+      name: HUDMenuPause0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 464
-        width: 750
-        height: 546
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 266, y: 122, z: 270, w: 122}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_1
-      rect:
-        serializedVersion: 2
-        x: 792
-        y: 944
-        width: 60
-        height: 51
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_2
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 941
-        width: 54
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_3
-      rect:
-        serializedVersion: 2
-        x: 1008
-        y: 620
-        width: 612
-        height: 375
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 14, y: 20, z: 14, w: 20}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_4
-      rect:
-        serializedVersion: 2
-        x: 792
-        y: 837
-        width: 69
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_5
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 837
-        width: 69
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_6
-      rect:
-        serializedVersion: 2
-        x: 792
-        y: 736
-        width: 69
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_7
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 736
-        width: 69
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_8
-      rect:
-        serializedVersion: 2
-        x: 798
-        y: 603
-        width: 69
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_9
-      rect:
-        serializedVersion: 2
-        x: 893
-        y: 593
-        width: 75
-        height: 78
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_10
-      rect:
-        serializedVersion: 2
-        x: 798
-        y: 487
-        width: 69
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_11
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 481
-        width: 75
-        height: 78
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_12
-      rect:
-        serializedVersion: 2
-        x: 1008
-        y: 444
-        width: 272
-        height: 135
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_13
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 369
-        width: 222
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_14
-      rect:
-        serializedVersion: 2
-        x: 284
-        y: 369
-        width: 228
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_15
-      rect:
-        serializedVersion: 2
-        x: 1008
-        y: 289
-        width: 84
-        height: 129
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_16
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 268
-        width: 222
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_17
-      rect:
-        serializedVersion: 2
-        x: 284
-        y: 268
-        width: 228
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hud_18
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 137
-        width: 573
+        x: 22
+        y: 1944
+        width: 564
         height: 87
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -386,11 +122,221 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hud_19
+      name: HUDMenuPause15
       rect:
         serializedVersion: 2
-        x: 800
-        y: 193
+        x: 737
+        y: 1986
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause16
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1984
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause15,1
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1962
+        width: 39
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause16,1
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1960
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1824
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause17
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1898
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause18
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1860
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause17,1
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1862
+        width: 39
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause2
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1686
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_10
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1760
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_11
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 1758
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause3
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1544
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_13
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1626
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_14
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1516
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause4
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1409
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_16
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1397
         width: 225
         height: 48
       alignment: 0
@@ -400,13 +346,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hud_20
+      name: HUDMenuPause5
       rect:
         serializedVersion: 2
-        x: 30
-        y: 20
-        width: 561
-        height: 93
+        x: 22
+        y: 1264
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_18
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1307
+        width: 225
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPauseMelhorado_19
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 1227
+        width: 225
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1125
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 995
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause8
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 855
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause9
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 713
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause10
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 571
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause11
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 433
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause12
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 293
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause13
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 162
+        width: 564
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUDMenuPause14
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 33
+        width: 564
+        height: 87
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

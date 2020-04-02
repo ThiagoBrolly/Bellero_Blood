@@ -65,12 +65,14 @@ public class _GameController : MonoBehaviour {
 	[Header("Paineis")]
 	public GameObject painelPause;
 	public GameObject painelItens;
+	public GameObject painelItemInfo;
 
 
 
 	[Header("Primeiro Elemento de Cada Painel")]
 	public Button fistPainelPause;
 	public Button fistPainelItens;
+	public Button fistPainelItemInfo;
 
 	
 
@@ -87,6 +89,7 @@ public class _GameController : MonoBehaviour {
 
 		painelPause.SetActive(false);
 		painelItens.SetActive(false);
+		painelItemInfo.SetActive(false);
 
 	}
 	
@@ -152,6 +155,22 @@ public class _GameController : MonoBehaviour {
 	public void usarItemArma(int idArma){
 		playerScript.trocarArma(idArma);
 	}
+
+	public void openItemInfo(){
+		painelItemInfo.SetActive(true);
+		fistPainelItemInfo.Select();
+	}
+
+	public void fecharItemInfo(){
+		painelItemInfo.SetActive(false);
+	}
+
+
+
+
+
+
+
 
 
 

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212033797265817690}
   - component: {fileID: 58833320555180410}
   - component: {fileID: 95034169626049718}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: spriteCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -20,9 +20,16 @@ public class coin : MonoBehaviour {
 	
 	public void coletar(){
 		
+		//_GameController.gold += valor;
+		//Destroy(this.gameObject);
+		StartCoroutine("coleta");
+
+	}
+
+	IEnumerator coleta(){
+		yield return new WaitForSeconds(0.15f);
 		_GameController.gold += valor;
 		Destroy(this.gameObject);
-
 	}
 
 }
