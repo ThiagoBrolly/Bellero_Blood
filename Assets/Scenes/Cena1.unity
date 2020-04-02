@@ -828,11 +828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c04a21f80ffcf4ca1a007f837c3fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidaMax: 0
+  vidaAtual: 0
   knockback: 2
   knockbackCount: 0
   knockbackLength: 0.5
   knockbackConfirm: 0
-  vida: 0
   speed: 2.5
   jumpForce: 6
   jumpTime: 0.15
@@ -5940,7 +5941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &796346267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7514,6 +7515,7 @@ MonoBehaviour:
   itemInventario:
   - {fileID: 1713575204987402, guid: 5598b019caa282f4eb254a4265992b9c, type: 2}
   - {fileID: 1713575204987402, guid: 5e321f3e88defc241a4d08c21deef628, type: 2}
+  itensCarregados: []
 --- !u!1 &1045744575
 GameObject:
   m_ObjectHideFlags: 0
@@ -7956,7 +7958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1101185969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8977,11 +8979,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -9375,7 +9377,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259474031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -0.52929103, z: -10}
+  m_LocalPosition: {x: -1.666666, y: -0.52929103, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

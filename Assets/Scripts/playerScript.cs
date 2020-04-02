@@ -9,12 +9,13 @@ public class playerScript : MonoBehaviour {
 	private Rigidbody2D playerRb;
 	private SpriteRenderer playerRender;
 
-	//public int vidaMax, vidaAtual;
+	public int vidaMax, vidaAtual;
 	public float knockback;
 	public float knockbackCount;
 	public float knockbackLength;
 	public bool knockbackConfirm;
-	public int vida;
+	//public int vida;
+
 
 	public float speed;
 	private bool isJumping;
@@ -60,7 +61,7 @@ public class playerScript : MonoBehaviour {
 		//_GameController.playerTransform = this.transform;
 
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
-		//vidaMax = _GameController.vidaMaxima;
+		vidaMax = _GameController.vidaMaxima;
 		//vidaAtual = _GameController.vidaAtualmente;
 		//idArma = _GameController.idArmaG;
 		
@@ -68,7 +69,7 @@ public class playerScript : MonoBehaviour {
 		playerAnimator = GetComponent<Animator>();
 		playerRender = GetComponent<SpriteRenderer>();
 
-		//vidaAtual = vidaMax;
+		vidaAtual = vidaMax;
 		
 
 		foreach (GameObject o in armas){
@@ -95,8 +96,8 @@ public class playerScript : MonoBehaviour {
 	void Update () {
 		if(_GameController.currentState != GameState.GAMEPLAY){return;}
 
-		idArma = _GameController.idArmaG;
-		vida = _GameController.vidaAtualmente;
+		/*idArma = _GameController.idArmaG;
+		vida = _GameController.vidaAtualmente;*/
 
 		h = Input.GetAxisRaw("Horizontal");
 		v = Input.GetAxisRaw("Vertical");
