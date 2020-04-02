@@ -3751,7 +3751,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 452380594}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1022754837}
+        m_MethodName: bExcluir
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &452380594
@@ -6330,7 +6341,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 703437294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1022754837}
+        m_MethodName: bAprimorar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &703437294
@@ -8863,6 +8885,7 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 86e90f84bc3b71744a7a2f046becc043, type: 3}
   custoArma: 
   idClasseArma: 
+  aprimoramentoArma: 03000000000000000000000000000000
   spriteArma1:
   - {fileID: 21300116, guid: 3a70927367c47d34aa50740cdeeb0626, type: 3}
   - {fileID: 21300000, guid: 9d17ecfccaee3364eba5b50a1ce00f45, type: 3}
@@ -17167,7 +17190,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1969858085}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1022754837}
+        m_MethodName: bEquipar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1969858085

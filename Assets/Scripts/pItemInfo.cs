@@ -22,6 +22,9 @@ public class pItemInfo : MonoBehaviour {
 	public Button btnEquipar;
 	public Button btnExcluir;
 
+	private int idArma;
+	private int aprimoramento;
+
 	
 
 
@@ -36,6 +39,52 @@ public class pItemInfo : MonoBehaviour {
 		item itemInfo = objetoSlot.GetComponent<item>();
 		int idArma = itemInfo.idItem;
 
+		imgItem.sprite = _GameController.imgInventario[idArma];
 		nomeItem.text = _GameController.NomeArma[idArma];
+
+		carregarAprimoramento();
+
+		string tipoDano = _GameController.tiposDano[_GameController.tipoDanoArma[idArma]];
+
+		int danoMin = _GameController.danoMinArma[idArma];
+		int danoMax = _GameController.danoMaxArma[idArma];
+
+		danoArma.text = "Dano: " + danoMin.ToString() + "-" + danoMax.ToString() + " / " + tipoDano;
+
+		
+	}
+
+
+
+	public void bAprimorar(){
+		_GameController.aprimorarArma(idArma);
+		carregarAprimoramento();
+	}
+
+	public void bEquipar(){
+		objetoSlot.SendMessage("usarItem", SendMessageOptions.DontRequireReceiver);
+		_GameController.voltarGamePlay();
+	}
+
+	public void bExcluir(){
+		_GameController.excluirItem(idSlot);
+	}
+
+	void carregarAprimoramento(){
+		aprimoramento = _GameController.aprimoramentoArma[idArma];
+
+		if(aprimoramento >= 10){
+			btnAprimorar.interactable = false;
+		} else{
+			btnAprimorar.interactable = true;
+		}
+
+		foreach(GameObject a in aprimoramentos){
+			a.SetActive(false);
+		}
+
+		for(int i = 0; i < aprimoramento; i++){
+			aprimoramentos[i].SetActive(true);
+		}
 	}
 }

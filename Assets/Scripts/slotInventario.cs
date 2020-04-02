@@ -25,7 +25,6 @@ public class slotInventario : MonoBehaviour {
 
 		print("Usei Item");
 		if(objetoSlot != null){
-			//objetoSlot.SendMessage("usarItem", SendMessageOptions.DontRequireReceiver);
 			pItemInfo.objetoSlot = objetoSlot;
 			pItemInfo.idSlot = idSlot;
 

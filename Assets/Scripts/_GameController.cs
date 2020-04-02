@@ -49,6 +49,8 @@ public class _GameController : MonoBehaviour {
 	public int[] custoArma;
 	public int[] idClasseArma;
 
+	public int[] aprimoramentoArma;
+
 
 	public Sprite[] spriteArma1;
 	public Sprite[] spriteArma2;
@@ -81,10 +83,12 @@ public class _GameController : MonoBehaviour {
 ///////////////////////////////////////////////////////////////////////////////////
 	void Start () {
 		//cam = Camera.main;
+
+		DontDestroyOnLoad(this.gameObject);
 		playerScript = FindObjectOfType(typeof(playerScript)) as playerScript;
 		inventario = FindObjectOfType(typeof(inventario)) as inventario;
 
-		DontDestroyOnLoad(this.gameObject);
+		
 		//vidaAtualmente = vidaMaxima;
 
 		painelPause.SetActive(false);
@@ -116,13 +120,11 @@ public class _GameController : MonoBehaviour {
 
 		switch(pauseState){
 			case true:
-				Time.timeScale = 0;
 				changeState(GameState.PAUSE);
 				fistPainelPause.Select();
 			break;
 
 			case false:
-				Time.timeScale = 1;
 				changeState(GameState.GAMEPLAY);
 			break;
 		}
@@ -131,6 +133,19 @@ public class _GameController : MonoBehaviour {
 
 	public void changeState(GameState newState){
 		currentState = newState;
+		switch(newState){
+			case GameState.GAMEPLAY:
+				Time.timeScale = 1;
+			break;
+
+			case GameState.PAUSE:
+				Time.timeScale = 0;
+			break;
+
+			case GameState.ITENS:
+				Time.timeScale = 0;
+			break;
+		}
 	}
 
 	public void bnItensDown(){
@@ -145,6 +160,8 @@ public class _GameController : MonoBehaviour {
 	public void fecharPainel(){
 		painelItens.SetActive(false);
 		painelPause.SetActive(true);
+		painelItemInfo.SetActive(false);
+
 		fistPainelPause.Select();
 
 		inventario.limparItensCarregados();
@@ -163,6 +180,28 @@ public class _GameController : MonoBehaviour {
 
 	public void fecharItemInfo(){
 		painelItemInfo.SetActive(false);
+	}
+
+	public void voltarGamePlay(){
+		painelItens.SetActive(false);
+		painelPause.SetActive(false);
+		painelItemInfo.SetActive(false);
+		changeState(GameState.GAMEPLAY);
+	}
+
+	public void excluirItem(int idSlot){
+		inventario.itemInventario.RemoveAt(idSlot);
+		inventario.carregarInventario();
+		painelItemInfo.SetActive(false);
+		fistPainelItens.Select();
+	}
+
+	public void aprimorarArma(int idArma){
+		int ap = aprimoramentoArma[idArma];
+		if(ap < 10){
+			ap += 1;
+			aprimoramentoArma[idArma] = ap;
+		}
 	}
 
 
