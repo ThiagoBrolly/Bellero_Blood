@@ -35,7 +35,7 @@ public class _GameController : MonoBehaviour {
 	public int idPersonagem;
 	public int idPersonagemAtual;
 	public int vidaMaxima;
-	public int vidaAtualmente;
+	//public int vidaAtualmente;
 	public int idArmaG;
 	//public int idArmaAtualG;
 
@@ -83,7 +83,7 @@ public class _GameController : MonoBehaviour {
 		inventario = FindObjectOfType(typeof(inventario)) as inventario;
 
 		DontDestroyOnLoad(this.gameObject);
-		vidaAtualmente = vidaMaxima;
+		//vidaAtualmente = vidaMaxima;
 
 		painelPause.SetActive(false);
 		painelItens.SetActive(false);

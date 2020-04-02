@@ -63,7 +63,7 @@ public class playerScript : MonoBehaviour {
 		//CARREGA OS DADOS INICIAIS DO PERSONAGEM
 		vidaMax = _GameController.vidaMaxima;
 		//vidaAtual = _GameController.vidaAtualmente;
-		//idArma = _GameController.idArmaG;
+		idArma = _GameController.idArmaG;
 		
 		playerRb = GetComponent<Rigidbody2D>();
 		playerAnimator = GetComponent<Animator>();
@@ -161,11 +161,11 @@ public class playerScript : MonoBehaviour {
 		}
 
 //RECEBER O NUMERO DE VIDA AO CARREGAR O GAME
-		if(_GameController.vidaAtualmente > _GameController.vidaMaxima){
-			_GameController.vidaAtualmente = _GameController.vidaMaxima;
+		if(vidaAtual > vidaMax){
+			vidaAtual = vidaMax;
 		}
 //MORRER QUANDO O NUMERO DE VIDAS CHEGAR A ZERO
-		if(_GameController.vidaAtualmente <= 0){
+		if(vidaAtual <= 0){
 			death = true;	
 			playerRb.velocity = new Vector2(0, playerRb.velocity.y);
 			this.gameObject.layer = LayerMask.NameToLayer("playerInvencivel");			
@@ -361,12 +361,12 @@ public class playerScript : MonoBehaviour {
 			break;
 
 			case "damage":
-				_GameController.vidaAtualmente -= 1;
+				vidaAtual -= 1;
 				print("Dano");
 			break;
 
 			case "armadilha":
-				_GameController.vidaAtualmente = 0;
+				vidaAtual = 0;
 			break;
 
 			/*case "portal":

@@ -7417,8 +7417,7 @@ MonoBehaviour:
   idPersonagem: 0
   idPersonagemAtual: 0
   vidaMaxima: 5
-  vidaAtualmente: 0
-  idArmaG: 3
+  idArmaG: 0
   nomePersonagem:
   - 
   - 
@@ -7514,7 +7513,9 @@ MonoBehaviour:
   qMana: 0
   itemInventario:
   - {fileID: 1713575204987402, guid: 5598b019caa282f4eb254a4265992b9c, type: 2}
+  - {fileID: 1713575204987402, guid: 7647cb70f9a6a5748b0667201f09c1ff, type: 2}
   - {fileID: 1713575204987402, guid: 5e321f3e88defc241a4d08c21deef628, type: 2}
+  - {fileID: 1713575204987402, guid: 81758d7299424b1468371038d5005127, type: 2}
   itensCarregados: []
 --- !u!1 &1045744575
 GameObject:

@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class hud : MonoBehaviour {
-
-	private _GameController _GameController;
+	private playerScript playerScript;
 	public Image[] hpBar;
 	public Sprite half, full;
 
@@ -13,7 +12,7 @@ public class hud : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		_GameController = FindObjectOfType(typeof(_GameController)) as _GameController;
+		playerScript = FindObjectOfType(typeof(playerScript)) as playerScript;
 		
 	}
 
@@ -26,7 +25,7 @@ public class hud : MonoBehaviour {
 	}
 
 	void controleBarraVida(){
-		float percVida = (float)_GameController.vidaAtualmente / (float)_GameController.vidaMaxima; //CALCULA O PERCENTUAL DE VIDA 0 - 1
+		float percVida = (float)playerScript.vidaAtual / (float)playerScript.vidaMax; //CALCULA O PERCENTUAL DE VIDA 0 - 1
 
 		// REPRESENTA 100% DE VIDA
 		foreach(Image img in hpBar){
