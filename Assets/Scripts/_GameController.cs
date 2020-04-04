@@ -189,6 +189,7 @@ public class _GameController : MonoBehaviour {
 
 	public void fecharItemInfo(){
 		painelItemInfo.SetActive(false);
+		fistPainelItens.Select();
 	}
 
 	public void voltarGamePlay(){
@@ -221,6 +222,10 @@ public class _GameController : MonoBehaviour {
 		inventario.itemInventario[idSlot] = t1;
 
 		voltarGamePlay();
+	}
+
+	public void coletarArma(GameObject objetoColetado){
+		inventario.itemInventario.Add(objetoColetado);
 	}
 
 
